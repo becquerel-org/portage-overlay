@@ -3,14 +3,15 @@
 # $Header: $
 
 #
-# eINIT SVN ebuild (v32)
+# eINIT GIT ebuild (v1)
+# (based on SVN ebuild v32)
 #
 
-inherit subversion flag-o-matic
+inherit flag-o-matic git
 
 EXPATVERSION="2.0.1"
 
-ESVN_REPO_URI="svn://svn.berlios.de/einit/trunk/${PN}"
+EGIT_REPO_URI="git://git.einit.org/core.git"
 SRC_URI="mirror://sourceforge/expat/expat-${EXPATVERSION}.tar.gz"
 
 DESCRIPTION="eINIT - an alternate /sbin/init"
@@ -40,13 +41,13 @@ S=${WORKDIR}/${PN}
 pkg_setup() {
 	enewgroup einit
 	ewarn
-	ewarn "WARNING: This is a live SVN build!!!"
+	ewarn "WARNING: This is a live GIT build!!!"
 	ewarn
 }
 
 src_unpack() {
 	unpack ${A}
-	subversion_src_unpack
+	git_src_unpack
 	cd "${S}"
 }
 
