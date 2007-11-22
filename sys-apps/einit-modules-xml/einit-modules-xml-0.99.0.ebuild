@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit subversion
+inherit git
 
-ESVN_REPO_URI="svn://svn.berlios.de/einit/trunk/modules/xml"
+EGIT_REPO_URI="git://git.einit.org/core.git"
 SRC_URI=""
 
 DESCRIPTION=".xml modules for eINIT"
@@ -20,28 +20,19 @@ RDEPEND=">=sys-apps/einit-0.23.5
 DEPEND="${RDEPEND}
 	>=sys-apps/portage-2.1.2-r11"
 
-S=${WORKDIR}/gentoo
+S=${WORKDIR}/einit/modules/xml
 
 src_unpack() {
-	subversion_src_unpack
-	cd "${S}"
+	git_src_unpack
 }
 
 src_compile() {
-	local myconf
-
-	myconf="--ebuild --svn --prefix=/ --libdir-name=$(get_libdir)"
-
-	econf ${myconf} || die
-	emake || die
-
-	if use doc ; then
-		make documentation || die
-	fi
+	:
 }
 
 src_install() {
-	emake -j1 install DESTDIR="${D}" || die
+	DESTDIR="${D}" ./install / $(get_libdir)
+
 	dodoc AUTHORS ChangeLog COPYING
 	if use doc ; then
 		dohtml build/documentation/html/*

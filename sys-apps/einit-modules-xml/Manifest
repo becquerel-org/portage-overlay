@@ -4,9 +4,51 @@ DIST einit-modules-xml-0.61.0.tar.bz2 21502 RMD160 d133659e94e29acaf2fd49aab87c9
 DIST einit-modules-xml-0.62.0.tar.bz2 22258 RMD160 a02133794c4c499de504b7f31c65dc90d009d084 SHA1 0c24cb5acf24640d65902f87bf4bc389af1a080d SHA256 12e952ed46167baf96ed8679c63de487aad8e789a49e4aaa08355c25e297d7e3
 DIST einit-modules-xml-0.70.0.tar.bz2 24690 RMD160 5d03e7812f398350ef74b93f8f77729200bb274a SHA1 07f1cf9724c9c5b6f0af561ea51d4c915413d0dc SHA256 d465a5ac3af89a8525703a16aa3d5bcf7dfe20be22218db303630dc503be7a7b
 EBUILD einit-modules-xml-0.60.0.ebuild 1072 RMD160 f9e2ab1c46d56ddc435bb5fd92ae5ac4aa2bd162 SHA1 8d63ca681ae755f38fd347f4b915ad7527434920 SHA256 26677574d7d2389da4326a435987288112779b95d23ff38fac4fadd917032447
+MD5 9f58633cbe4360ebd642d91e1d344d2a einit-modules-xml-0.60.0.ebuild 1072
+RMD160 f9e2ab1c46d56ddc435bb5fd92ae5ac4aa2bd162 einit-modules-xml-0.60.0.ebuild 1072
+SHA256 26677574d7d2389da4326a435987288112779b95d23ff38fac4fadd917032447 einit-modules-xml-0.60.0.ebuild 1072
 EBUILD einit-modules-xml-0.60.1.ebuild 1072 RMD160 f9e2ab1c46d56ddc435bb5fd92ae5ac4aa2bd162 SHA1 8d63ca681ae755f38fd347f4b915ad7527434920 SHA256 26677574d7d2389da4326a435987288112779b95d23ff38fac4fadd917032447
+MD5 9f58633cbe4360ebd642d91e1d344d2a einit-modules-xml-0.60.1.ebuild 1072
+RMD160 f9e2ab1c46d56ddc435bb5fd92ae5ac4aa2bd162 einit-modules-xml-0.60.1.ebuild 1072
+SHA256 26677574d7d2389da4326a435987288112779b95d23ff38fac4fadd917032447 einit-modules-xml-0.60.1.ebuild 1072
 EBUILD einit-modules-xml-0.61.0.ebuild 1072 RMD160 f9e2ab1c46d56ddc435bb5fd92ae5ac4aa2bd162 SHA1 8d63ca681ae755f38fd347f4b915ad7527434920 SHA256 26677574d7d2389da4326a435987288112779b95d23ff38fac4fadd917032447
+MD5 9f58633cbe4360ebd642d91e1d344d2a einit-modules-xml-0.61.0.ebuild 1072
+RMD160 f9e2ab1c46d56ddc435bb5fd92ae5ac4aa2bd162 einit-modules-xml-0.61.0.ebuild 1072
+SHA256 26677574d7d2389da4326a435987288112779b95d23ff38fac4fadd917032447 einit-modules-xml-0.61.0.ebuild 1072
 EBUILD einit-modules-xml-0.61.0_rc1816.ebuild 936 RMD160 f6b4d393a5db0a177eb8d3e4ac21d71869f86ca5 SHA1 03f0f4e496b0a03760e1d43b9cf7ae0774b0fe8a SHA256 ba8f6f4541b018a96b5be2e3a6fa8d3096a5a1c3b95845021038604ab58ed36b
+MD5 16a7696b6fc57130b40c1f788f791498 einit-modules-xml-0.61.0_rc1816.ebuild 936
+RMD160 f6b4d393a5db0a177eb8d3e4ac21d71869f86ca5 einit-modules-xml-0.61.0_rc1816.ebuild 936
+SHA256 ba8f6f4541b018a96b5be2e3a6fa8d3096a5a1c3b95845021038604ab58ed36b einit-modules-xml-0.61.0_rc1816.ebuild 936
 EBUILD einit-modules-xml-0.62.0.ebuild 1039 RMD160 9a028ee52ceaf32113dff31435e74ce658a0a727 SHA1 45cab9be6a3222fb60e4f8b7bcdb81f25f83d99c SHA256 d29529394fb97f4ead027fd6a0dc617ccd2242581c0dedd97e920be06cc335a5
+MD5 f58e241b8709b6b1f99af7d75d8b77d9 einit-modules-xml-0.62.0.ebuild 1039
+RMD160 9a028ee52ceaf32113dff31435e74ce658a0a727 einit-modules-xml-0.62.0.ebuild 1039
+SHA256 d29529394fb97f4ead027fd6a0dc617ccd2242581c0dedd97e920be06cc335a5 einit-modules-xml-0.62.0.ebuild 1039
 EBUILD einit-modules-xml-0.70.0.ebuild 1082 RMD160 37a8a5c557047096054d48e4cd126d1d3d8eb080 SHA1 7ee2d9e41c769931017bd246b918a4994bff7c6f SHA256 1c31d1f241e6fe1ff1e29fa4982b66f74540c4cfa9978b99bcade4478d029109
-EBUILD einit-modules-xml-0.99.0.ebuild 876 RMD160 0c03efcb676f27961bc9e09363f6b9dcd67aa4b2 SHA1 19159ed3b7b57441a20486046710c3678e193738 SHA256 c70fb62c8c22eb594d22ba170a0761dbc918b15bff0a27dc169e29b1fd147f49
+MD5 dccfd820bc448a7f800b16044327dc05 einit-modules-xml-0.70.0.ebuild 1082
+RMD160 37a8a5c557047096054d48e4cd126d1d3d8eb080 einit-modules-xml-0.70.0.ebuild 1082
+SHA256 1c31d1f241e6fe1ff1e29fa4982b66f74540c4cfa9978b99bcade4478d029109 einit-modules-xml-0.70.0.ebuild 1082
+EBUILD einit-modules-xml-0.99.0.ebuild 681 RMD160 080796743cfbcbee0be146cbb4185a34241810ae SHA1 16d737f0e4311f0e66d031e9d09885fa2c052527 SHA256 7b1a54fcb7b6f287cb1fb602711510b0e1ad2908e4a62dca4a87316af54dab8b
+MD5 83f56432624c5f4391605673fb85f297 einit-modules-xml-0.99.0.ebuild 681
+RMD160 080796743cfbcbee0be146cbb4185a34241810ae einit-modules-xml-0.99.0.ebuild 681
+SHA256 7b1a54fcb7b6f287cb1fb602711510b0e1ad2908e4a62dca4a87316af54dab8b einit-modules-xml-0.99.0.ebuild 681
+MD5 a07b2f65f973b36dae64f653850df9ec files/digest-einit-modules-xml-0.60.0 198
+RMD160 6a1219e686b33cd6b9b0d47b13a8a5922e81c72a files/digest-einit-modules-xml-0.60.0 198
+SHA256 aa2253f71398ae16e5b42b2ae116f5caf767d4d3036144415d8f1b2af3d84710 files/digest-einit-modules-xml-0.60.0 198
+MD5 9c6ec221e67cc965dedb38219f459385 files/digest-einit-modules-xml-0.60.1 198
+RMD160 b659d3bc5b9aabca861e2ca846ddd6eb109f740b files/digest-einit-modules-xml-0.60.1 198
+SHA256 d74a5fdae54933b3b4b7dd70f46598fe6e40f600245d3ad11c171631e7e248e2 files/digest-einit-modules-xml-0.60.1 198
+MD5 78cb9f268dfd352655118c3e5cf20954 files/digest-einit-modules-xml-0.61.0 198
+RMD160 9e186ca54682949adf44bf829afb16f7714c5047 files/digest-einit-modules-xml-0.61.0 198
+SHA256 29edf4e2f0a50ecc965eb661d6fb22712484dd1047e4367436672177cfe4f4ab files/digest-einit-modules-xml-0.61.0 198
+MD5 d41d8cd98f00b204e9800998ecf8427e files/digest-einit-modules-xml-0.61.0_rc1816 0
+RMD160 9c1185a5c5e9fc54612808977ee8f548b2258d31 files/digest-einit-modules-xml-0.61.0_rc1816 0
+SHA256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 files/digest-einit-modules-xml-0.61.0_rc1816 0
+MD5 74bc3b137ec752ab53320c971b962337 files/digest-einit-modules-xml-0.62.0 274
+RMD160 7ed64a5137f8b8f7f515915ce04fa0eaf0c60f22 files/digest-einit-modules-xml-0.62.0 274
+SHA256 ee587225c8b37bdfa1c74b52d88a6541b24c588e5f0b595ac00a6ee8faec5084 files/digest-einit-modules-xml-0.62.0 274
+MD5 387504a7253c321dc7ab6bae37aba878 files/digest-einit-modules-xml-0.70.0 274
+RMD160 5590822f9a54973522eef0de051660022a75612f files/digest-einit-modules-xml-0.70.0 274
+SHA256 258adc0abeb4c923ec0180be57d5358b55f66fddf6c6f5b6653376d9bede9c3b files/digest-einit-modules-xml-0.70.0 274
+MD5 d41d8cd98f00b204e9800998ecf8427e files/digest-einit-modules-xml-0.99.0 0
+RMD160 9c1185a5c5e9fc54612808977ee8f548b2258d31 files/digest-einit-modules-xml-0.99.0 0
+SHA256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 files/digest-einit-modules-xml-0.99.0 0
