@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 	>=sys-apps/portage-2.1.2-r11"
 PDEPEND="!noxml? ( sys-apps/einit-modules-xml )"
 
-S=${WORKDIR}/${PN}/einit/einit
+S=${WORKDIR}/${PN}
 
 pkg_setup() {
 	enewgroup einit
@@ -48,7 +48,6 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 	git_src_unpack
-	cd "${S}"
 }
 
 src_compile() {
@@ -61,44 +60,48 @@ src_compile() {
 		emake
 	popd
 
-	myconf="--ebuild --svn --prefix=/ --with-expat=${WORKDIR}/expat-${EXPATVERSION}/.libs/libexpat.a --libdir-name=$(get_libdir) --enable-tests"
+	pushd "${S}/einit"
 
-	if use static ; then
-		local myconf="${myconf} --static"
-	fi
-	if use debug ; then
-		local myconf="${myconf} --debug"
-	fi
-	if use nowtf ; then
-		local myconf="${myconf} --nowtf"
-	fi
-	if use dbus ; then
-		myconf="${myconf} --enable-ipc-dbus"
-	fi
-	if use baselayout2 ; then
-		myconf="${myconf} --distro-support=gentoo"
-	fi
-	if use externalise ; then
-		local myconf="${myconf} --externalise"
-	fi
-	if ! use fbsplash ; then
-		local myconf="${myconf} --no-feedback-visual-fbsplash"
-	fi
-	if ! use aural ; then
-		local myconf="${myconf} --no-feedback-aural --no-feedback-aural-festival"
-	fi
+		myconf="--ebuild --svn --prefix=/ --with-expat=${WORKDIR}/expat-${EXPATVERSION}/.libs/libexpat.a --libdir-name=$(get_libdir) --enable-tests"
 
-	if use scheme; then
-		local myconf="${myconf} --enable-module-scheme-guile"
-	fi
+		if use static ; then
+			local myconf="${myconf} --static"
+		fi
+		if use debug ; then
+			local myconf="${myconf} --debug"
+		fi
+		if use nowtf ; then
+			local myconf="${myconf} --nowtf"
+		fi
+		if use dbus ; then
+			myconf="${myconf} --enable-ipc-dbus"
+		fi
+		if use baselayout2 ; then
+			myconf="${myconf} --distro-support=gentoo"
+		fi
+		if use externalise ; then
+			local myconf="${myconf} --externalise"
+		fi
+		if ! use fbsplash ; then
+			local myconf="${myconf} --no-feedback-visual-fbsplash"
+		fi
+		if ! use aural ; then
+			local myconf="${myconf} --no-feedback-aural --no-feedback-aural-festival"
+		fi
+
+		if use scheme; then
+			local myconf="${myconf} --enable-module-scheme-guile"
+		fi
 	
-	echo ${myconf}
-	econf ${myconf} || die
-	emake || die
+		echo ${myconf}
+		econf ${myconf} || die
+		emake || die
 
-	if use doc ; then
-		make documentation || die
-	fi
+		if use doc ; then
+			make documentation || die
+		fi
+
+	popd
 }
 
 src_install() {
