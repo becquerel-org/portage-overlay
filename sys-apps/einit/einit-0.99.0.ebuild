@@ -105,18 +105,22 @@ src_compile() {
 }
 
 src_install() {
-	emake -j1 install DESTDIR="${D}/${ROOT}" || die
-	dodoc AUTHORS ChangeLog COPYING
-	doman documentation/man/*.8
-	keepdir /etc/einit/local
-	keepdir /etc/einit/modules
-	if use doc ; then
-		dohtml build/documentation/html/*
-	fi
+	pushd "${S}/einit"
+		emake -j1 install DESTDIR="${D}/${ROOT}" || die
+		dodoc AUTHORS ChangeLog COPYING
+		doman documentation/man/*.8
+		keepdir /etc/einit/local
+		keepdir /etc/einit/modules
+		if use doc ; then
+			dohtml build/documentation/html/*
+		fi
+	popd
 }
 
 src_test() {
-	emake -j1 test || die
+	pushd "${S}/einit"
+		emake -j1 test || die
+	popd
 }
 
 pkg_postinst() {
