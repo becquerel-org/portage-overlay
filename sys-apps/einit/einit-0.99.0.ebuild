@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 	>=sys-apps/portage-2.1.2-r11"
 PDEPEND="!noxml? ( sys-apps/einit-modules-xml )"
 
-S=${WORKDIR}/${PN}/einit
+S=${WORKDIR}/${PN}/einit/einit
 
 pkg_setup() {
 	enewgroup einit
