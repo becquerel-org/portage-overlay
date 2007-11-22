@@ -20,7 +20,7 @@ RDEPEND=">=sys-apps/einit-0.23.5
 DEPEND="${RDEPEND}
 	>=sys-apps/portage-2.1.2-r11"
 
-S=${WORKDIR}/einit/modules/xml
+S=${WORKDIR}/${PN}
 
 src_unpack() {
 	git_src_unpack
@@ -31,10 +31,12 @@ src_compile() {
 }
 
 src_install() {
-	DESTDIR="${D}" ./install / $(get_libdir)
+	pushd "${S}/modules/xml"
+		DESTDIR="${D}" ./install / $(get_libdir)
 
-	dodoc AUTHORS ChangeLog COPYING
-	if use doc ; then
-		dohtml build/documentation/html/*
-	fi
+		dodoc AUTHORS ChangeLog COPYING
+		if use doc ; then
+			dohtml build/documentation/html/*
+		fi
+	popd
 }
