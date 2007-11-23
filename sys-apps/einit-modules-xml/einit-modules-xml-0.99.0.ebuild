@@ -32,7 +32,7 @@ src_compile() {
 
 src_install() {
 	pushd "${S}/modules/xml"
-		DESTDIR="${D}" ./install / $(get_libdir)
+		CONFIGINSTALLMETHOD="ebuild" DESTDIR="${D}" ./install / $(get_libdir)
 
 		dodoc AUTHORS ChangeLog COPYING
 		if use doc ; then
