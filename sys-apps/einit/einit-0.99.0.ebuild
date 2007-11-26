@@ -3,8 +3,7 @@
 # $Header: $
 
 #
-# eINIT GIT ebuild (v1)
-# (based on SVN ebuild v32)
+# eINIT GIT ebuild (v2)
 #
 
 inherit flag-o-matic git
@@ -63,7 +62,7 @@ src_compile() {
 
 	pushd "${S}/einit"
 
-		myconf="--ebuild --svn --prefix=/ --with-expat=${WORKDIR}/expat-${EXPATVERSION}/.libs/libexpat.a --libdir-name=$(get_libdir) --enable-tests"
+		myconf="--ebuild --git --prefix=/ --with-expat=${WORKDIR}/expat-${EXPATVERSION}/.libs/libexpat.a --libdir-name=$(get_libdir) --enable-tests"
 
 		if use static ; then
 			local myconf="${myconf} --static"
