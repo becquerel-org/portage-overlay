@@ -54,6 +54,8 @@ src_compile() {
 	local myconf
 
 	filter-flags "-fomit-frame-pointer"
+	filter-ldflags "-Wl,--enable-new-dtags"
+	filter-ldflags "-Wl,-z,now"
 
 	pushd ${WORKDIR}/expat-${EXPATVERSION}
 		CFLAGS=-fPIC econf
