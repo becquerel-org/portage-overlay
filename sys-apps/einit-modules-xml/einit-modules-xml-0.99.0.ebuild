@@ -4,7 +4,7 @@
 
 inherit git
 
-EGIT_REPO_URI="git://git.einit.org/core.git"
+EGIT_REPO_URI="git://git.einit.org/modules/xml-sh.git"
 SRC_URI=""
 
 DESCRIPTION=".xml modules for eINIT"
@@ -31,7 +31,7 @@ src_compile() {
 }
 
 src_install() {
-	pushd "${S}/modules/xml"
+	pushd "${S}/"
 		CONFIGINSTALLMETHOD="ebuild" DESTDIR="${D}" ./install / $(get_libdir)
 
 		dodoc AUTHORS ChangeLog COPYING
