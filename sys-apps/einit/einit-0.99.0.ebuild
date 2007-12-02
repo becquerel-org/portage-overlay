@@ -62,7 +62,7 @@ src_compile() {
 		emake
 	popd
 
-	pushd "${S}/einit"
+	pushd "${S}/"
 
 		myconf="--ebuild --git --prefix=/ --with-expat=${WORKDIR}/expat-${EXPATVERSION}/.libs/libexpat.a --libdir-name=$(get_libdir) --enable-tests"
 
@@ -107,7 +107,7 @@ src_compile() {
 }
 
 src_install() {
-	pushd "${S}/einit"
+	pushd "${S}/"
 		emake -j1 install DESTDIR="${D}/${ROOT}" || die
 		dodoc AUTHORS ChangeLog COPYING
 		doman documentation/man/*.8
@@ -120,7 +120,7 @@ src_install() {
 }
 
 src_test() {
-	pushd "${S}/einit"
+	pushd "${S}/"
 		emake -j1 test || die
 	popd
 }
