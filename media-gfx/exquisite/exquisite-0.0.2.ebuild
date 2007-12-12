@@ -4,7 +4,7 @@ DESCRIPTION="Slick and simple bootsplash daemon"
 HOMEPAGE="http://www.enlightenment.org"
 SRC_URI="http://www.rasterman.com/files/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 
