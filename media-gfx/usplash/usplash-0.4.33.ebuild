@@ -15,7 +15,7 @@ src_compile() {
 src_install() {
 	emake install DESTDIR=${D} || die
 
-	mkdir ${D}/var/lib/usplash
+	mkdir -p ${D}/var/lib/usplash
 	mkfifo ${D}/var/lib/usplash/usplash_fifo
 
 	dodoc AUTHORS
