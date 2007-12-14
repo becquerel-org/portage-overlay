@@ -15,6 +15,7 @@ src_compile() {
 src_install() {
 	mkdir -p ${D}/lib/usplash
 	cp -a *.so ${D}/lib/usplash
+	ln -s eft-theme.so ${D}/lib/usplash/default.so
 
 	dodoc README
 }
