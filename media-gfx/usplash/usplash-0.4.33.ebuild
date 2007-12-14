@@ -9,14 +9,14 @@ KEYWORDS="~x86 ~amd64"
 S=${WORKDIR}/${PN}
 
 src_compile() {
+	mv usplash.h usplash.h.in
+	sed -e "s|/usr/lib/usplash/usplash-artwork.so|/lib/usplash/default.so|" <usplash.h.in >usplash.h
+
 	make
 }
 
 src_install() {
 	emake install DESTDIR=${D} || die
-
-	mkdir -p ${D}/var/lib/usplash
-	mkfifo ${D}/var/lib/usplash/usplash_fifo
 
 	dodoc AUTHORS
 }
