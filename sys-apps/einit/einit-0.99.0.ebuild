@@ -47,9 +47,11 @@ pkg_setup() {
 	if use stable; then
 		einfo "selected 'stable' GIT branch"
 		EGIT_BRANCH='stable'
+		EGIT_TREE='stable'
 	elif use testing; then
 		einfo "selected 'testing' GIT branch"
 		EGIT_BRANCH='testing' 
+		EGIT_TREE='testing'
 	fi
 }
 
