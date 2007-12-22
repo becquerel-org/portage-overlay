@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="-*"
 # RESTRICT="strip"
 
-IUSE="doc static debug nowtf externalise fbsplash aural dbus noxml baselayout2 scheme"
+IUSE="doc static debug nowtf externalise fbsplash aural dbus noxml baselayout2 scheme testing stable"
 
 #>=dev-libs/libnl-1.0_pre6
 
@@ -43,6 +43,14 @@ pkg_setup() {
 	ewarn
 	ewarn "WARNING: This is a live GIT build!!!"
 	ewarn
+
+	if use stable; then
+		einfo "selected 'stable' GIT branch"
+		EGIT_BRANCH='stable'
+	elif use testing; then
+		einfo "selected 'testing' GIT branch"
+		EGIT_BRANCH='testing' 
+	fi
 }
 
 src_unpack() {
@@ -140,13 +148,15 @@ pkg_postinst() {
 	einfo "You can always find the latest documentation at"
 	einfo "http://einit.org/"
 	einfo
-	einfo "I'm going to run 'einit --wtf' now, to see if there's anything you'll need"
-	einfo "to set up."
-	einfo
-	chroot ${ROOT} /sbin/einit --wtf
-	einfo
-	einfo "Done; make sure you follow any advice given in the output of the command that"
-	einfo "just ran. If you wish to have einit re-evaluate the current state, just run"
-	einfo "'/sbin/einit --wtf' in a root-shell near you."
-	einfo
+	if ! use nowtf; then
+		einfo "I'm going to run 'einit --wtf' now, to see if there's anything you'll need"
+		einfo "to set up."
+		einfo
+		chroot ${ROOT} /sbin/einit --wtf
+		einfo
+		einfo "Done; make sure you follow any advice given in the output of the command that"
+		einfo "just ran. If you wish to have einit re-evaluate the current state, just run"
+		einfo "'/sbin/einit --wtf' in a root-shell near you."
+		einfo
+	fi
 }
