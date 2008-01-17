@@ -26,7 +26,6 @@ IUSE="doc static debug nowtf externalise fbsplash aural dbus noxml baselayout2 s
 #>=dev-libs/libnl-1.0_pre6
 
 RDEPEND="app-text/rnv
-	sys-apps/iproute2
 	dbus? ( >=sys-apps/dbus-1.0.2-r2 )
 	baselayout2? ( >=sys-apps/baselayout-2.0.0_rc2-r1 )
 	!sys-apps/einit-modules-gentoo
