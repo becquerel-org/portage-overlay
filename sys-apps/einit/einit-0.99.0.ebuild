@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="-*"
 # RESTRICT="strip"
 
-IUSE="doc static debug nowtf externalise fbsplash aural dbus noxml baselayout2 scheme testing stable"
+IUSE="doc static debug nowtf externalise fbsplash aural dbus noxml baselayout2 noscheme testing stable"
 
 #>=dev-libs/libnl-1.0_pre6
 
@@ -29,11 +29,12 @@ RDEPEND="app-text/rnv
 	dbus? ( >=sys-apps/dbus-1.0.2-r2 )
 	baselayout2? ( >=sys-apps/baselayout-2.0.0_rc2-r1 )
 	!sys-apps/einit-modules-gentoo
-	scheme? ( >=dev-scheme/guile-1.8 )"
+	!noscheme? ( >=dev-scheme/guile-1.8 )"
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook-sgml app-doc/doxygen )
 	>=sys-apps/portage-2.1.2-r11"
-PDEPEND="!noxml? ( sys-apps/einit-modules-xml )"
+PDEPEND="!noxml? ( sys-apps/einit-modules-xml )
+         !noscheme ( sys-apps/einit-modules-scheme )"
 
 S=${WORKDIR}/${PN}
 
