@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-text/docbook-sgml app-doc/doxygen )
 	>=sys-apps/portage-2.1.2-r11"
 PDEPEND="!noxml? ( sys-apps/einit-modules-xml )
-         !noscheme ( sys-apps/einit-modules-scheme )"
+         !noscheme? ( sys-apps/einit-modules-scheme )"
 
 S=${WORKDIR}/${PN}
 
