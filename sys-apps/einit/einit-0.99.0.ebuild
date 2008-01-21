@@ -101,7 +101,7 @@ src_compile() {
 			local myconf="${myconf} --no-feedback-aural --no-feedback-aural-festival"
 		fi
 
-		if use scheme; then
+		if ! use noscheme; then
 			local myconf="${myconf} --enable-module-scheme-guile"
 		fi
 	
