@@ -43,6 +43,13 @@ pkg_setup() {
 	ewarn "WARNING: This is a live GIT build!!!"
 	ewarn
 
+	if ! use noscheme; then
+		if ! built_with_use "dev-scheme/guile" 'threads' ; then
+			die "you need to build guile with USE='threads'"
+		fi
+	fi
+
+
 	if use stable; then
 		einfo "selected 'stable' GIT branch"
 		EGIT_BRANCH='stable'
