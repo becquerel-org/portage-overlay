@@ -17,8 +17,7 @@ IUSE="doc"
 
 RDEPEND=">=sys-apps/einit-0.23.5
 	doc? ( app-text/docbook-sgml app-doc/doxygen )"
-DEPEND="${RDEPEND}
-	>=sys-apps/portage-2.1.2-r11"
+DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${PN}
 

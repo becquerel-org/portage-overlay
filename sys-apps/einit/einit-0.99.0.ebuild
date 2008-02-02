@@ -30,8 +30,7 @@ RDEPEND="app-text/rnv
 	!sys-apps/einit-modules-gentoo
 	!noscheme? ( >=dev-scheme/guile-1.8 )"
 DEPEND="${RDEPEND}
-	doc? ( app-text/docbook-sgml app-doc/doxygen )
-	>=sys-apps/portage-2.1.2-r11"
+	doc? ( app-text/docbook-sgml app-doc/doxygen )"
 PDEPEND="!noxml? ( sys-apps/einit-modules-xml )
          !noscheme? ( sys-apps/einit-modules-scheme )"
 

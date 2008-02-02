@@ -12,8 +12,7 @@ IUSE=""
 
 RDEPEND=">=sys-apps/einit-0.25.0
 	doc? ( app-text/docbook-sgml app-doc/doxygen )"
-DEPEND="${RDEPEND}
-	>=sys-apps/portage-2.1.2-r11"
+DEPEND="${RDEPEND}"
 
 src_compile() {
 	:
