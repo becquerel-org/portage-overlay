@@ -69,7 +69,11 @@ src_unpack() {
 src_compile() {
 
 	if use scons; then
-		scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT}
+		if ! use noscheme; then
+			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT}
+		else
+			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none
+		fi
 	else
 
 		local myconf
@@ -127,7 +131,11 @@ src_compile() {
 
 src_install() {
 	if use scons; then
-		scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} install
+		if ! use noscheme; then
+			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} install
+		else
+			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none install
+		fi
 	else
 		pushd "${S}/"
 			emake -j1 install DESTDIR="${D}/${ROOT}" || die
