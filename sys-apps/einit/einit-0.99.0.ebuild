@@ -69,7 +69,7 @@ src_unpack() {
 src_compile() {
 
 	if use scons; then
-		scons libdir=$(get_libdir) destdir=${D}/${ROOT}/
+		scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT}
 	else
 
 		local myconf
@@ -127,7 +127,7 @@ src_compile() {
 
 src_install() {
 	if use scons; then
-		scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ install
+		scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} install
 	else
 		pushd "${S}/"
 			emake -j1 install DESTDIR="${D}/${ROOT}" || die
