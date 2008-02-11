@@ -21,14 +21,15 @@ SLOT="0"
 KEYWORDS="-*"
 # RESTRICT="strip"
 
-IUSE="doc static debug nowtf externalise fbsplash aural noxml baselayout2 noscheme testing stable"
+IUSE="doc static debug nowtf externalise fbsplash aural noxml baselayout2 noscheme testing stable scons"
 
 #>=dev-libs/libnl-1.0_pre6
 
 RDEPEND="app-text/rnv
 	baselayout2? ( >=sys-apps/baselayout-2.0.0_rc2-r1 )
 	!sys-apps/einit-modules-gentoo
-	!noscheme? ( >=dev-scheme/guile-1.8 )"
+	!noscheme? ( >=dev-scheme/guile-1.8 )
+        scons? ( dev-util/scons )"
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook-sgml app-doc/doxygen )"
 PDEPEND="!noxml? ( sys-apps/einit-modules-xml )
@@ -66,69 +67,79 @@ src_unpack() {
 }
 
 src_compile() {
-	local myconf
 
-	filter-flags "-fomit-frame-pointer"
-	filter-ldflags "-Wl,--enable-new-dtags"
-	filter-ldflags "-Wl,-z,now"
+	if use scons; then
+		scons libdir=$(get_libdir) destdir=${D}/${ROOT}/
+	else
 
-	pushd ${WORKDIR}/expat-${EXPATVERSION}
-		CFLAGS=-fPIC econf
-		emake
-	popd
+		local myconf
 
-	pushd "${S}/"
+		filter-flags "-fomit-frame-pointer"
+		filter-ldflags "-Wl,--enable-new-dtags"
+		filter-ldflags "-Wl,-z,now"
 
-		myconf="--ebuild --git --prefix=/ --with-expat=${WORKDIR}/expat-${EXPATVERSION}/.libs/libexpat.a --libdir-name=$(get_libdir) --enable-tests"
+		pushd ${WORKDIR}/expat-${EXPATVERSION}
+			CFLAGS=-fPIC econf
+			emake
+		popd
 
-		if use static ; then
-			local myconf="${myconf} --static"
-		fi
-		if use debug ; then
-			local myconf="${myconf} --debug"
-		fi
-		if use nowtf ; then
-			local myconf="${myconf} --nowtf"
-		fi
-		if use baselayout2 ; then
-			myconf="${myconf} --distro-support=gentoo"
-		fi
-		if use externalise ; then
-			local myconf="${myconf} --externalise"
-		fi
-		if ! use fbsplash ; then
-			local myconf="${myconf} --no-feedback-visual-fbsplash"
-		fi
-		if ! use aural ; then
-			local myconf="${myconf} --no-feedback-aural --no-feedback-aural-festival"
-		fi
+		pushd "${S}/"
 
-		if ! use noscheme; then
-			local myconf="${myconf} --enable-module-scheme-guile"
-		fi
+			myconf="--ebuild --git --prefix=/ --with-expat=${WORKDIR}/expat-${EXPATVERSION}/.libs/libexpat.a --libdir-name=$(get_libdir) --enable-tests"
+
+			if use static ; then
+				local myconf="${myconf} --static"
+			fi
+			if use debug ; then
+				local myconf="${myconf} --debug"
+			fi
+			if use nowtf ; then
+				local myconf="${myconf} --nowtf"
+			fi
+			if use baselayout2 ; then
+				myconf="${myconf} --distro-support=gentoo"
+			fi
+			if use externalise ; then
+				local myconf="${myconf} --externalise"
+			fi
+			if ! use fbsplash ; then
+				local myconf="${myconf} --no-feedback-visual-fbsplash"
+			fi
+			if ! use aural ; then
+				local myconf="${myconf} --no-feedback-aural --no-feedback-aural-festival"
+			fi
+
+			if ! use noscheme; then
+				local myconf="${myconf} --enable-module-scheme-guile"
+			fi
 	
-		echo ${myconf}
-		econf ${myconf} || die
-		emake || die
+			echo ${myconf}
+			econf ${myconf} || die
+			emake || die
 
-		if use doc ; then
-			make documentation || die
-		fi
+			if use doc ; then
+				make documentation || die
+			fi
 
-	popd
+		popd
+	fi
 }
 
 src_install() {
-	pushd "${S}/"
-		emake -j1 install DESTDIR="${D}/${ROOT}" || die
-		dodoc AUTHORS ChangeLog COPYING
-		doman documentation/man/*.8
-		keepdir /etc/einit/local
-		keepdir /etc/einit/modules
-		if use doc ; then
-			dohtml build/documentation/html/*
-		fi
-	popd
+	if use scons; then
+		scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ install
+	else
+		pushd "${S}/"
+			emake -j1 install DESTDIR="${D}/${ROOT}" || die
+			dodoc AUTHORS ChangeLog COPYING
+			doman documentation/man/*.8
+			keepdir /etc/einit/local
+			keepdir /etc/einit/modules
+			if use doc ; then
+				dohtml build/documentation/html/*
+			fi
+		popd
+	fi
 }
 
 src_test() {
