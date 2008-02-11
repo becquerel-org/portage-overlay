@@ -70,9 +70,9 @@ src_compile() {
 
 	if use scons; then
 		if ! use noscheme; then
-			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT}
+			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} || die
 		else
-			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none
+			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none || die
 		fi
 	else
 
@@ -132,9 +132,9 @@ src_compile() {
 src_install() {
 	if use scons; then
 		if ! use noscheme; then
-			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} install
+			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} install || die
 		else
-			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none install
+			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none install || die
 		fi
 	else
 		pushd "${S}/"
