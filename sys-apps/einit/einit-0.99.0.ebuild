@@ -138,6 +138,8 @@ src_install() {
 		else
 			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none install || die
 		fi
+
+		ln -s ../sbin/einit ${D}/${ROOT}/einit
 	else
 		pushd "${S}/"
 			emake -j1 install DESTDIR="${D}/${ROOT}" || die
