@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="-*"
 # RESTRICT="strip"
 
-IUSE="doc static debug nowtf externalise fbsplash aural noxml baselayout2 noscheme testing stable scons"
+IUSE="doc static debug nowtf externalise fbsplash aural noxml baselayout2 noscheme testing stable"
 
 #>=dev-libs/libnl-1.0_pre6
 
@@ -29,7 +29,7 @@ RDEPEND="app-text/rnv
 	baselayout2? ( >=sys-apps/baselayout-2.0.0_rc2-r1 )
 	!sys-apps/einit-modules-gentoo
 	!noscheme? ( >=dev-scheme/guile-1.8 )
-        scons? ( dev-util/scons )"
+        testing? ( dev-util/scons )"
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook-sgml app-doc/doxygen )"
 PDEPEND="!noxml? ( sys-apps/einit-modules-xml )
@@ -41,6 +41,8 @@ pkg_setup() {
 	enewgroup einit
 	ewarn
 	ewarn "WARNING: This is a live GIT build!!!"
+	ewarn "We're currently rewriting the build system in scons, so"
+	ewarn "IF THINGS DON'T COMPILE, TELL US!"
 	ewarn
 
 	if ! use noscheme; then
@@ -68,7 +70,7 @@ src_unpack() {
 
 src_compile() {
 
-	if use scons; then
+	if use testing; then
 		if ! use noscheme; then
 			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} || die
 		else
@@ -130,7 +132,7 @@ src_compile() {
 }
 
 src_install() {
-	if use scons; then
+	if use testing; then
 		if ! use noscheme; then
 			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} install || die
 		else
@@ -160,7 +162,7 @@ pkg_postinst() {
 	einfo
 	einfo "eINIT is now installed, but you will still need to configure it."
 	einfo
-	einfo "To use einit as a non-root user, and that user to the group 'einit'."
+	einfo "To use einit as a non-root user, add that user to the group 'einit'."
 	einfo
 	if use doc ; then
 		einfo
