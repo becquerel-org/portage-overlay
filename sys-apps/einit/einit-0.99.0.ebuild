@@ -61,6 +61,10 @@ pkg_setup() {
 		EGIT_BRANCH='testing' 
 		EGIT_TREE='testing'
 	fi
+
+	if [ $(getconf GNU_LIBPTHREAD_VERSION | cut -d " " -f 1) != "NPTL" ]; then
+		break;
+	fi
 }
 
 src_unpack() {
