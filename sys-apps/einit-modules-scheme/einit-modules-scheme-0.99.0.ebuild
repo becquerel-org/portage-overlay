@@ -31,4 +31,5 @@ src_compile() {
 
 src_install() {
 	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} install || die
+	dodoc README
 }
