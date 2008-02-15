@@ -1,4 +1,8 @@
+sys-apps/einit:aural - enable audio feedback support
+sys-apps/einit:baselayour2 - enable baselayout2/openrc module support.
 sys-apps/einit:efl - Use the EFL -- Evas/Edje/Ecore
-sys-apps/einit:nowtf - Don't compile code for the --wtf flag
-sys-apps/einit:noscheme - Disable scheme (guile) modules
+sys-apps/einit:fbsplash - enable splashutils support
+sys-apps/einit:noscheme - Don'c compile support for scheme modules - DO NOT DO THIS UNLESS YOU KNOW WHAT YOU ARE DOING
+sys-apps/einit:nowtf - Don't compile code for the --wtf flag - DO NOT DO THIS UNLESS YOU KNOW WHAT YOU ARE DOING
+sys-apps/einit:noxml - Don't compile support for XML/sh modules - DO NOT DO THIS UNLESS YOU KNOW WHAT YOU ARE DOING
 sys-apps/einit:externalise - Compile as much as possible externally
