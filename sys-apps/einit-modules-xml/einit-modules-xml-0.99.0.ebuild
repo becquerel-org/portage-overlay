@@ -13,11 +13,11 @@ HOMEPAGE="http://einit.org/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="-*"
-IUSE="doc"
+IUSE=""
 
-RDEPEND=">=sys-apps/einit-0.23.5
-	doc? ( app-text/docbook-sgml app-doc/doxygen )"
-DEPEND="${RDEPEND}"
+RDEPEND=">=sys-apps/einit-0.25.3"
+DEPEND="${RDEPEND}
+	dev-util/scons"
 
 S=${WORKDIR}/${PN}
 
@@ -26,16 +26,9 @@ src_unpack() {
 }
 
 src_compile() {
-	:
+	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} || die
 }
 
 src_install() {
-	pushd "${S}/"
-		CONFIGINSTALLMETHOD="ebuild" DESTDIR="${D}" ./install / $(get_libdir)
-
-		dodoc AUTHORS ChangeLog COPYING
-		if use doc ; then
-			dohtml build/documentation/html/*
-		fi
-	popd
+	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} install || die
 }
