@@ -28,10 +28,10 @@ IUSE="doc static debug nowtf externalise fbsplash aural noxml baselayout2 nosche
 RDEPEND="app-text/rnv
 	baselayout2? ( >=sys-apps/baselayout-2.0.0_rc2-r1 )
 	!sys-apps/einit-modules-gentoo
-	!noscheme? ( >=dev-scheme/guile-1.8 )
-        testing? ( dev-util/scons )"
+	!noscheme? ( >=dev-scheme/guile-1.8 )"
 DEPEND="${RDEPEND}
-	doc? ( app-text/docbook-sgml app-doc/doxygen )"
+	doc? ( app-text/docbook-sgml app-doc/doxygen )
+	testing? ( dev-util/scons )"
 PDEPEND="!noxml? ( sys-apps/einit-modules-xml )
          !noscheme? ( sys-apps/einit-modules-scheme )"
 
