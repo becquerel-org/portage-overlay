@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit git
+inherit git python
 
 EGIT_REPO_URI="git://git.einit.org/modules/xml-sh.git"
 SRC_URI=""
@@ -23,6 +23,7 @@ S=${WORKDIR}/${PN}
 
 src_unpack() {
 	git_src_unpack
+	python_version
 }
 
 src_compile() {
