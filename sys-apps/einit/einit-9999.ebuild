@@ -6,7 +6,7 @@
 # eINIT GIT ebuild (v2)
 #
 
-inherit flag-o-matic git
+inherit flag-o-matic git python
 
 EXPATVERSION="2.0.1"
 
@@ -64,6 +64,9 @@ pkg_setup() {
 
 	if [ $(getconf GNU_LIBPTHREAD_VERSION | cut -d " " -f 1) != "NPTL" ]; then
 		break;
+	fi
+	if use testing; then
+		python_version
 	fi
 }
 
