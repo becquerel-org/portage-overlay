@@ -19,21 +19,18 @@ HOMEPAGE="http://einit.org/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="-*"
-# RESTRICT="strip"
 
-IUSE="doc static debug nowtf externalise fbsplash aural noxml baselayout2 noscheme testing stable"
-
-#>=dev-libs/libnl-1.0_pre6
+IUSE="aural baselayout2 debug doc externalise fbsplash noscheme nowtf noxml static testing"
 
 RDEPEND="app-text/rnv
-	baselayout2? ( >=sys-apps/baselayout-2.0.0_rc2-r1 )
-	!sys-apps/einit-modules-gentoo
-	!noscheme? ( >=dev-scheme/guile-1.8 )"
+		 baselayout2? ( >=sys-apps/baselayout-2.0.0_rc2-r1 )
+		 !sys-apps/einit-modules-gentoo
+		 !noscheme? ( >=dev-scheme/guile-1.8 )"
 DEPEND="${RDEPEND}
-	doc? ( app-text/docbook-sgml app-doc/doxygen )
-	testing? ( dev-util/scons )"
+		doc? ( app-text/docbook-sgml app-doc/doxygen )
+		testing? ( dev-util/scons )"
 PDEPEND="!noxml? ( sys-apps/einit-modules-xml )
-         !noscheme? ( sys-apps/einit-modules-scheme )"
+		 !noscheme? ( sys-apps/einit-modules-scheme )"
 
 S=${WORKDIR}/${PN}
 
@@ -51,14 +48,9 @@ pkg_setup() {
 		fi
 	fi
 
-
-	if use stable; then
-		einfo "selected 'stable' GIT branch"
-		EGIT_BRANCH='stable'
-		EGIT_TREE='stable'
-	elif use testing; then
+	if use testing; then
 		einfo "selected 'testing' GIT branch"
-		EGIT_BRANCH='testing' 
+		EGIT_BRANCH='testing'
 		EGIT_TREE='testing'
 	fi
 
@@ -125,7 +117,7 @@ src_compile() {
 			if ! use noscheme; then
 				local myconf="${myconf} --enable-module-scheme-guile"
 			fi
-	
+
 			echo ${myconf}
 			econf ${myconf} || die
 			emake || die
