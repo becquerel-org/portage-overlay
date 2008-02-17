@@ -22,7 +22,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="-*"
 
-IUSE="debug doc (openrc) +relaxng +scheme testing +xml"
+IUSE="debug doc openrc +relaxng +scheme testing +xml"
 
 RDEPEND="openrc? ( sys-apps/openrc )
 		 !sys-apps/einit-modules-gentoo

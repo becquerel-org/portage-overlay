@@ -1,0 +1,2 @@
+# openrc interface is borked atm
+=sys-apps/einit-9999 openrc
