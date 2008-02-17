@@ -11,7 +11,7 @@ DEPEND="${RDEPEND}
 		app-arch/unzip"
 
 src_compile() {
-	emake -f Makefile.gnu || die
+	emake -j1 -f Makefile.gnu || die
 }
 
 src_install() {
