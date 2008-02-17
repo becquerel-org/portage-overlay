@@ -21,7 +21,8 @@ KEYWORDS="-*"
 
 IUSE=""
 
-RDEPEND="=sys-apps/einit-9999"
+RDEPEND="=sys-apps/einit-9999
+		 dev-libs/expat"
 DEPEND="${RDEPEND}"
 
 src_unpack() {
@@ -30,9 +31,9 @@ src_unpack() {
 }
 
 src_compile() {
-	scons destdir=${D}/${ROOT}/ || die
+	scons destdir=${D}/${ROOT}/usr/ || die
 }
 
 src_install() {
-	scons destdir=${D}/${ROOT}/ install || die
+	scons destdir=${D}/${ROOT}/usr/ install || die
 }
