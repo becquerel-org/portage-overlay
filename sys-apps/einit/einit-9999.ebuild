@@ -98,7 +98,10 @@ src_compile() {
 				local myconf="${myconf} --debug"
 			fi
 			if use openrc ; then
-				myconf="${myconf} --distro-support=gentoo"
+				ewarn
+				ewarn "OpenRC support is currently disabled, sorry!"
+				ewarn
+				#myconf="${myconf} --distro-support=gentoo"
 			fi
 			if use scheme; then
 				local myconf="${myconf} --enable-module-scheme-guile"
