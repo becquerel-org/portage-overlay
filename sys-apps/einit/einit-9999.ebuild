@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="1"
+
 #
 # eINIT GIT ebuild (v2)
 #
@@ -20,17 +22,17 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="-*"
 
-IUSE="aural baselayout2 debug doc externalise fbsplash noscheme nowtf noxml static testing"
+IUSE="debug doc ( openrc ) +relaxng +scheme testing +xml"
 
-RDEPEND="app-text/rnv
-		 baselayout2? ( >=sys-apps/baselayout-2.0.0_rc2-r1 )
+RDEPEND="openrc? ( sys-apps/openrc )
 		 !sys-apps/einit-modules-gentoo
-		 !noscheme? ( >=dev-scheme/guile-1.8 )"
+		 scheme? ( >=dev-scheme/guile-1.8 )"
 DEPEND="${RDEPEND}
 		doc? ( app-text/docbook-sgml app-doc/doxygen )
 		testing? ( dev-util/scons )"
-PDEPEND="!noxml? ( sys-apps/einit-modules-xml )
-		 !noscheme? ( sys-apps/einit-modules-scheme )"
+PDEPEND="xml? ( sys-apps/einit-modules-xml )
+		 scheme? ( sys-apps/einit-modules-scheme )
+		 relaxng? ( app-text/rnv )"
 
 S=${WORKDIR}/${PN}
 
@@ -42,7 +44,7 @@ pkg_setup() {
 	ewarn "IF THINGS DON'T COMPILE, TELL US!"
 	ewarn
 
-	if ! use noscheme; then
+	if use scheme; then
 		if ! built_with_use "dev-scheme/guile" 'threads' ; then
 			die "you need to build guile with USE='threads'"
 		fi
@@ -70,7 +72,7 @@ src_unpack() {
 src_compile() {
 
 	if use testing; then
-		if ! use noscheme; then
+		if use scheme; then
 			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} || die
 		else
 			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none || die
@@ -92,29 +94,13 @@ src_compile() {
 
 			myconf="--ebuild --git --prefix=/ --with-expat=${WORKDIR}/expat-${EXPATVERSION}/.libs/libexpat.a --libdir-name=$(get_libdir) --enable-tests"
 
-			if use static ; then
-				local myconf="${myconf} --static"
-			fi
 			if use debug ; then
 				local myconf="${myconf} --debug"
 			fi
-			if use nowtf ; then
-				local myconf="${myconf} --nowtf"
-			fi
-			if use baselayout2 ; then
+			if use openrc ; then
 				myconf="${myconf} --distro-support=gentoo"
 			fi
-			if use externalise ; then
-				local myconf="${myconf} --externalise"
-			fi
-			if ! use fbsplash ; then
-				local myconf="${myconf} --no-feedback-visual-fbsplash"
-			fi
-			if ! use aural ; then
-				local myconf="${myconf} --no-feedback-aural --no-feedback-aural-festival"
-			fi
-
-			if ! use noscheme; then
+			if use scheme; then
 				local myconf="${myconf} --enable-module-scheme-guile"
 			fi
 
@@ -132,7 +118,7 @@ src_compile() {
 
 src_install() {
 	if use testing; then
-		if ! use noscheme; then
+		if use scheme; then
 			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} install || die
 		else
 			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none install || die
@@ -167,23 +153,11 @@ pkg_postinst() {
 	einfo "To use einit as a non-root user, add that user to the group 'einit'."
 	einfo
 	if use doc ; then
-		einfo
 		einfo "Since you had the doc use-flag enabled, you should find the user's guide"
 		einfo "in /usr/share/doc/einit-version/html/"
+		einfo
 	fi
-	einfo
 	einfo "You can always find the latest documentation at"
 	einfo "http://einit.org/"
 	einfo
-	if ! use nowtf; then
-		einfo "I'm going to run 'einit --wtf' now, to see if there's anything you'll need"
-		einfo "to set up."
-		einfo
-		chroot ${ROOT} /sbin/einit --wtf
-		einfo
-		einfo "Done; make sure you follow any advice given in the output of the command that"
-		einfo "just ran. If you wish to have einit re-evaluate the current state, just run"
-		einfo "'/sbin/einit --wtf' in a root-shell near you."
-		einfo
-	fi
 }
