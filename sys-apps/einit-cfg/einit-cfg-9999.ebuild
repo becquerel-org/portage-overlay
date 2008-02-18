@@ -27,7 +27,7 @@ src_unpack() {
 }
 
 src_compile() {
-	scons destdir=${D}/${ROOT}/ || die
+	scons ${MAKEOPTS:--j2} destdir=${D}/${ROOT}/ || die
 }
 
 src_install() {

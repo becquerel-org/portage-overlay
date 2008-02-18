@@ -73,9 +73,9 @@ src_compile() {
 
 	if use testing; then
 		if use scheme; then
-			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} || die
+			scons ${MAKEOPTS:--j2} libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} || die
 		else
-			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none || die
+			scons ${MAKEOPTS:--j2} libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none || die
 		fi
 	else
 
