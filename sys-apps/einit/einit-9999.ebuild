@@ -71,82 +71,19 @@ src_unpack() {
 
 src_compile() {
 
-	if use testing; then
-		if use scheme; then
-			scons ${MAKEOPTS:--j2} libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} || die
-		else
-			scons ${MAKEOPTS:--j2} libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none || die
-		fi
+	if use scheme; then
+		scons ${MAKEOPTS:--j2} libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} || die
 	else
-
-		local myconf
-
-		filter-flags "-fomit-frame-pointer"
-		filter-ldflags "-Wl,--enable-new-dtags"
-		filter-ldflags "-Wl,-z,now"
-
-		pushd ${WORKDIR}/expat-${EXPATVERSION}
-			CFLAGS=-fPIC econf
-			emake
-		popd
-
-		pushd "${S}/"
-
-			myconf="--ebuild --git --prefix=/ --with-expat=${WORKDIR}/expat-${EXPATVERSION}/.libs/libexpat.a --libdir-name=$(get_libdir) --enable-tests"
-
-			if use debug ; then
-				local myconf="${myconf} --debug"
-			fi
-			if use openrc ; then
-				ewarn
-				ewarn "OpenRC support is currently disabled, sorry!"
-				ewarn
-				#myconf="${myconf} --distro-support=gentoo"
-			fi
-			if use scheme; then
-				local myconf="${myconf} --enable-module-scheme-guile"
-			fi
-
-			echo ${myconf}
-			econf ${myconf} || die
-			emake || die
-
-			if use doc ; then
-				make documentation || die
-			fi
-
-		popd
+		scons ${MAKEOPTS:--j2} libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none || die
 	fi
 }
 
 src_install() {
-	if use testing; then
-		if use scheme; then
-			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} install || die
-		else
-			scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none install || die
-		fi
-
-		mkdir -p ${D}/${ROOT}/bin
-		ln -s ../sbin/einit ${D}/${ROOT}/bin/einit
+	if use scheme; then
+		scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} install || die
 	else
-		pushd "${S}/"
-			emake -j1 install DESTDIR="${D}/${ROOT}" || die
-			dodoc AUTHORS ChangeLog COPYING
-			doman documentation/man/*.8
-			keepdir /etc/einit/local
-			keepdir /etc/einit/modules
-			if use doc ; then
-				dohtml build/documentation/html/*
-			fi
-		popd
+		scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none install || die
 	fi
-}
-
-src_test() {
-	pushd "${S}/"
-		emake -j1 test || die
-	popd
 }
 
 pkg_postinst() {
