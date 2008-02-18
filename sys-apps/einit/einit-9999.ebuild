@@ -84,6 +84,9 @@ src_install() {
 	else
 		scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none install || die
 	fi
+
+	mkdir -p ${D}/${ROOT}/bin
+	ln -s ../sbin/einit ${D}/${ROOT}/bin/einit
 }
 
 pkg_postinst() {
