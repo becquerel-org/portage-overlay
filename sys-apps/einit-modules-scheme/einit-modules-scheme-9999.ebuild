@@ -15,11 +15,18 @@ SLOT="0"
 KEYWORDS="-*"
 IUSE=""
 
-RDEPEND=">=sys-apps/einit-0.25.3"
+RDEPEND=">=sys-apps/einit-0.40.0
+	scheme? ( >=dev-scheme/guile-1.8 )"
 DEPEND="${RDEPEND}
 	dev-util/scons"
 
 S=${WORKDIR}/${PN}
+
+pkg_setup() {
+	if ! built_with_use "dev-scheme/guile" 'threads' ; then
+		die "you need to build guile with USE='threads'"
+	fi
+}
 
 src_unpack() {
 	git_src_unpack

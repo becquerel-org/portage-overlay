@@ -25,8 +25,7 @@ KEYWORDS="-*"
 IUSE="debug doc openrc +relaxng +scheme testing +xml"
 
 RDEPEND="openrc? ( sys-apps/openrc )
-		 !sys-apps/einit-modules-gentoo
-		 scheme? ( >=dev-scheme/guile-1.8 )"
+		 !sys-apps/einit-modules-gentoo"
 DEPEND="${RDEPEND}
 		doc? ( app-text/docbook-sgml app-doc/doxygen )
 		testing? ( dev-util/scons )"
@@ -43,12 +42,6 @@ pkg_setup() {
 	ewarn "We're currently rewriting the build system in scons, so"
 	ewarn "IF THINGS DON'T COMPILE, TELL US!"
 	ewarn
-
-	if use scheme; then
-		if ! built_with_use "dev-scheme/guile" 'threads' ; then
-			die "you need to build guile with USE='threads'"
-		fi
-	fi
 
 	if use testing; then
 		einfo "selected 'testing' GIT branch"
@@ -71,19 +64,11 @@ src_unpack() {
 
 src_compile() {
 
-	if use scheme; then
-		scons ${MAKEOPTS:--j2} libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} || die
-	else
-		scons ${MAKEOPTS:--j2} libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none || die
-	fi
+	scons ${MAKEOPTS:--j2} libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} || die
 }
 
 src_install() {
-	if use scheme; then
-		scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} install || die
-	else
-		scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} scheme=none install || die
-	fi
+	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} install || die
 
 	mkdir -p ${D}/${ROOT}/bin
 	ln -s ../sbin/einit ${D}/${ROOT}/bin/einit
