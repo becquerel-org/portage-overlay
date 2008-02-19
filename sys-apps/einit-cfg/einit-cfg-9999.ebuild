@@ -4,10 +4,6 @@
 
 EAPI="1"
 
-#
-# eINIT GIT ebuild (v2)
-#
-
 inherit flag-o-matic git python
 
 EGIT_REPO_URI="git://git.einit.org/cfg.git"
@@ -21,7 +17,8 @@ KEYWORDS="-*"
 
 IUSE=""
 
-RDEPEND="=sys-apps/einit-9999"
+RDEPEND="=sys-apps/einit-9999
+	 app-text/xmlstarlet"
 DEPEND="${RDEPEND}"
 
 src_unpack() {
