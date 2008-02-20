@@ -72,6 +72,8 @@ src_install() {
 
 	mkdir -p ${D}/${ROOT}/bin
 	ln -s ../sbin/einit ${D}/${ROOT}/bin/einit
+	ln -s ../$(get_libdir)/einit/bin/einit-log ${D}/${ROOT}/bin/einit-log
+	ln -s ../$(get_libdir)/einit/bin/einit-feedback ${D}/${ROOT}/bin/einit-feedback
 }
 
 pkg_postinst() {
