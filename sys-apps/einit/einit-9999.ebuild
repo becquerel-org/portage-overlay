@@ -74,6 +74,8 @@ src_install() {
 	ln -s ../sbin/einit ${D}/${ROOT}/bin/einit
 	ln -s ../$(get_libdir)/einit/bin/einit-log ${D}/${ROOT}/bin/einit-log
 	ln -s ../$(get_libdir)/einit/bin/einit-feedback ${D}/${ROOT}/bin/einit-feedback
+
+	doman documentation/man/*.8
 }
 
 pkg_postinst() {
