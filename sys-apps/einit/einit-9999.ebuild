@@ -8,7 +8,7 @@ EAPI="1"
 # eINIT GIT ebuild (v2)
 #
 
-inherit flag-o-matic git python
+inherit eutils git python
 
 EXPATVERSION="2.0.1"
 
@@ -22,15 +22,15 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="-*"
 
-IUSE="debug doc openrc +relaxng +scheme testing +xml"
+IUSE="debug doc openrc +relaxng testing"
 
 RDEPEND="openrc? ( sys-apps/openrc )
 		 !sys-apps/einit-modules-gentoo"
 DEPEND="${RDEPEND}
 		doc? ( app-text/docbook-sgml app-doc/doxygen )
-		testing? ( dev-util/scons )"
-PDEPEND="xml? ( sys-apps/einit-modules-xml )
-		 scheme? ( sys-apps/einit-modules-scheme )
+		dev-util/scons"
+PDEPEND="=sys-apps/einit-modules-xml-9999
+		 =sys-apps/einit-modules-scheme-9999
 		 relaxng? ( app-text/rnv )"
 
 S=${WORKDIR}/${PN}
@@ -39,8 +39,6 @@ pkg_setup() {
 	enewgroup einit
 	ewarn
 	ewarn "WARNING: This is a live GIT build!!!"
-	ewarn "We're currently rewriting the build system in scons, so"
-	ewarn "IF THINGS DON'T COMPILE, TELL US!"
 	ewarn
 
 	if use testing; then
@@ -52,14 +50,12 @@ pkg_setup() {
 	if [ $(getconf GNU_LIBPTHREAD_VERSION | cut -d " " -f 1) != "NPTL" ]; then
 		break;
 	fi
-	if use testing; then
-		python_version
-	fi
 }
 
 src_unpack() {
-	unpack ${A}
-	git_src_unpack
+	unpack ${A} || die
+	git_src_unpack || die
+	python_version || die
 }
 
 src_compile() {

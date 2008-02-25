@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit git python
+inherit eutils git python
 
 EGIT_REPO_URI="git://git.einit.org/modules/xml-sh.git"
 SRC_URI=""
@@ -15,9 +15,9 @@ SLOT="0"
 KEYWORDS="-*"
 IUSE=""
 
-RDEPEND=">=sys-apps/einit-0.25.3"
+RDEPEND=">=sys-apps/einit-0.40.0"
 DEPEND="${RDEPEND}
-	dev-util/scons"
+		dev-util/scons"
 
 S=${WORKDIR}/${PN}
 

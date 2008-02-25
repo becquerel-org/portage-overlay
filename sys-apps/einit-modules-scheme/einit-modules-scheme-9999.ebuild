@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit git python
+inherit eutils git python
 
 EGIT_REPO_URI="git://git.einit.org/modules/scheme.git"
 SRC_URI=""
@@ -16,9 +16,9 @@ KEYWORDS="-*"
 IUSE=""
 
 RDEPEND=">=sys-apps/einit-0.40.0
-	scheme? ( >=dev-scheme/guile-1.8 )"
+		 >=dev-scheme/guile-1.8"
 DEPEND="${RDEPEND}
-	dev-util/scons"
+		dev-util/scons"
 
 S=${WORKDIR}/${PN}
 
