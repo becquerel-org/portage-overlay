@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit python
+inherit eutils python
 
 SRC_URI="http://einit.org/files/einit-modules-scheme-1.0.0.0.tar.bz2"
 

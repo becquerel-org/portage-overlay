@@ -4,12 +4,9 @@
 
 EAPI="1"
 
-inherit flag-o-matic python
+inherit eutils python
 
-EXPATVERSION="2.0.1"
-
-SRC_URI="http://einit.org/files/einit-0.40.0.tar.bz2
-		 mirror://sourceforge/expat/expat-${EXPATVERSION}.tar.gz"
+SRC_URI="http://einit.org/files/einit-0.40.0.tar.bz2"
 
 DESCRIPTION="eINIT - an alternate /sbin/init"
 HOMEPAGE="http://einit.org/"
