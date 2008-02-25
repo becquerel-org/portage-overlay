@@ -4,7 +4,7 @@
 
 EAPI="1"
 
-inherit python
+inherit flag-o-matic python
 
 EXPATVERSION="2.0.1"
 
