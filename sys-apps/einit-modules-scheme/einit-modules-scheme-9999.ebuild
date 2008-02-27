@@ -13,7 +13,7 @@ HOMEPAGE="http://einit.org/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="-*"
-IUSE=""
+IUSE="testing"
 
 RDEPEND=">=sys-apps/einit-0.40.0
 		 >=dev-scheme/guile-1.8"
@@ -25,6 +25,14 @@ S=${WORKDIR}/${PN}
 pkg_setup() {
 	if ! built_with_use "dev-scheme/guile" 'threads' ; then
 		die "you need to build guile with USE='threads'"
+	fi
+	ewarn
+	ewarn "WARNING: This is a live GIT build!!!"
+	ewarn
+	if use testing; then
+		einfo "selected 'testing' GIT branch"
+		EGIT_BRANCH='testing'
+		EGIT_TREE='testing'
 	fi
 }
 
