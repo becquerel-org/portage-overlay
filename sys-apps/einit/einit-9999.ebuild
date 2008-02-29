@@ -25,9 +25,8 @@ DEPEND="${RDEPEND}
 		doc? ( app-text/docbook-sgml app-doc/doxygen )
 		dev-util/scons"
 PDEPEND="=sys-apps/einit-modules-xml-9999
-		 =sys-apps/einit-modules-scheme-9999
 		 relaxng? ( app-text/rnv )
-	scheme? ( sys-apps/einit-modules-scheme )"
+	scheme? ( =sys-apps/einit-modules-scheme-9999 )"
 
 S=${WORKDIR}/${PN}
 
