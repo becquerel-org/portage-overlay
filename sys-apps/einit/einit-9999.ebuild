@@ -52,7 +52,6 @@ pkg_setup() {
 }
 
 src_unpack() {
-	unpack ${A} || die
 	git_src_unpack || die
 	python_version || die
 }
