@@ -19,14 +19,15 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="-*"
 
-IUSE="debug +relaxng testing"
+IUSE="debug +relaxng testing scheme"
 
 DEPEND="${RDEPEND}
 		doc? ( app-text/docbook-sgml app-doc/doxygen )
 		dev-util/scons"
 PDEPEND="=sys-apps/einit-modules-xml-9999
 		 =sys-apps/einit-modules-scheme-9999
-		 relaxng? ( app-text/rnv )"
+		 relaxng? ( app-text/rnv )
+	scheme? ( sys-apps/einit-modules-scheme )"
 
 S=${WORKDIR}/${PN}
 
