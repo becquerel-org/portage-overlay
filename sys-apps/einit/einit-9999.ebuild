@@ -22,7 +22,6 @@ KEYWORDS="-*"
 IUSE="debug +relaxng testing scheme"
 
 DEPEND="${RDEPEND}
-		doc? ( app-text/docbook-sgml app-doc/doxygen )
 		dev-util/scons"
 PDEPEND="=sys-apps/einit-modules-xml-9999
 		 relaxng? ( app-text/rnv )
@@ -77,11 +76,6 @@ pkg_postinst() {
 	einfo
 	einfo "To use einit as a non-root user, add that user to the group 'einit'."
 	einfo
-	if use doc ; then
-		einfo "Since you had the doc use-flag enabled, you should find the user's guide"
-		einfo "in /usr/share/doc/einit-version/html/"
-		einfo
-	fi
 	einfo "You can always find the latest documentation at"
 	einfo "http://einit.org/"
 	einfo
