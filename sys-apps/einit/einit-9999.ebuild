@@ -10,10 +10,7 @@ EAPI="1"
 
 inherit eutils git python
 
-EXPATVERSION="2.0.1"
-
 EGIT_REPO_URI="git://git.einit.org/core.git"
-SRC_URI="mirror://sourceforge/expat/expat-${EXPATVERSION}.tar.gz"
 
 DESCRIPTION="eINIT - an alternate /sbin/init"
 HOMEPAGE="http://einit.org/"
@@ -22,10 +19,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="-*"
 
-IUSE="debug doc openrc +relaxng testing"
+IUSE="debug +relaxng testing"
 
-RDEPEND="openrc? ( sys-apps/openrc )
-		 !sys-apps/einit-modules-gentoo"
 DEPEND="${RDEPEND}
 		doc? ( app-text/docbook-sgml app-doc/doxygen )
 		dev-util/scons"
@@ -50,6 +45,10 @@ pkg_setup() {
 	if [ $(getconf GNU_LIBPTHREAD_VERSION | cut -d " " -f 1) != "NPTL" ]; then
 		break;
 	fi
+
+	if use debug; then
+		$CFLAGS="${CFLAGS} -g"
+	fi
 }
 
 src_unpack() {
@@ -59,7 +58,6 @@ src_unpack() {
 }
 
 src_compile() {
-
 	scons ${MAKEOPTS:--j2} libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} || die
 }
 
