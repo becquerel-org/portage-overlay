@@ -4,7 +4,7 @@
 
 inherit eutils python
 
-SRC_URI="http://einit.org/files/einit-modules-scheme-1.0.0.1.tar.bz2"
+SRC_URI="http://einit.org/files/einit-modules-scheme-1.0.0.2.tar.bz2"
 
 DESCRIPTION="Scheme modules for eINIT"
 HOMEPAGE="http://einit.org/"
