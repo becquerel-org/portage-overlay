@@ -1,4 +1,4 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 		dev-util/scons"
 PDEPEND="=sys-apps/einit-modules-xml-9999
 		 relaxng? ( app-text/rnv )
-	scheme? ( =sys-apps/einit-modules-scheme-9999 )"
+		 scheme? ( =sys-apps/einit-modules-scheme-9999 )"
 
 S=${WORKDIR}/${PN}
 
@@ -46,7 +46,7 @@ pkg_setup() {
 	fi
 
 	if use debug; then
-		$CFLAGS="${CFLAGS} -g"
+		CFLAGS="${CFLAGS} -g"
 	fi
 }
 
