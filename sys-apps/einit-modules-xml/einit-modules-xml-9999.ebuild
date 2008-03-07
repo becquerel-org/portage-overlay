@@ -5,7 +5,6 @@
 inherit eutils git python
 
 EGIT_REPO_URI="git://git.einit.org/modules/xml-sh.git"
-SRC_URI=""
 
 DESCRIPTION=".xml modules for eINIT"
 HOMEPAGE="http://einit.org/"
@@ -22,8 +21,8 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${PN}
 
 src_unpack() {
-	git_src_unpack
-	python_version
+	git_src_unpack || die
+	python_version || die
 }
 
 src_compile() {

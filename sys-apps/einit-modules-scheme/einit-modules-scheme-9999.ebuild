@@ -1,11 +1,10 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 inherit eutils git python
 
 EGIT_REPO_URI="git://git.einit.org/modules/scheme.git"
-SRC_URI=""
 
 DESCRIPTION="Scheme modules for eINIT"
 HOMEPAGE="http://einit.org/"
@@ -37,8 +36,8 @@ pkg_setup() {
 }
 
 src_unpack() {
-	git_src_unpack
-	python_version
+	git_src_unpack || die
+	python_version || die
 }
 
 src_compile() {
