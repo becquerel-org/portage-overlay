@@ -4,7 +4,7 @@
 
 inherit eutils git python
 
-EGIT_REPO_URI="git://git.einit.org/modules/elf.git"
+EGIT_REPO_URI="git://git.einit.org/event-servers.git"
 SRC_URI=""
 
 DESCRIPTION="External binary based services for eINIT"
