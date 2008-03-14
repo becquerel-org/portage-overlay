@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="-*"
 IUSE=""
 
-RDEPEND=">=sys-apps/einit-9999"
+RDEPEND=">=sys-apps/einit-9999
+	x11-libs/libnotify"
 DEPEND="${RDEPEND}
 		dev-util/scons"
 
