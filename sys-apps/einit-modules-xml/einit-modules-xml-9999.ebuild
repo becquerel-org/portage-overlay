@@ -12,13 +12,24 @@ HOMEPAGE="http://einit.org/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="-*"
-IUSE=""
+IUSE="testing"
 
 RDEPEND=">=sys-apps/einit-0.40.0"
 DEPEND="${RDEPEND}
 		dev-util/scons"
 
 S=${WORKDIR}/${PN}
+
+pkg_setup() {
+	ewarn
+	ewarn "WARNING: This is a live GIT build!!!"
+	ewarn
+	if use testing; then
+		einfo "selected 'testing' GIT branch"
+		EGIT_BRANCH='testing'
+		EGIT_TREE='testing'
+	fi
+}
 
 src_unpack() {
 	git_src_unpack || die
