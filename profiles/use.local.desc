@@ -3,3 +3,5 @@ sys-apps/einit:scheme - Compile support for scheme modules - DO NOT DISABLE UNLE
 sys-apps/einit:xml - Compile support for XML/sh modules - DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING!
 sys-apps/einit:relaxng - Validate configuration with Rng schemas via app-text/rnv.
 sys-apps/einit:testing - Use git 'testing' branch: adventurous people only.
+sys-apps/einit-modules-scheme:testing - Use git 'testing' branch: adventurous people only.
+sys-apps/einit-modules-xml:testing - Use git 'testing' branch: adventurous people only.
