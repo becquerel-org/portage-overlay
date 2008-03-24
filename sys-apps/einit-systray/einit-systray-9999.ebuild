@@ -16,7 +16,8 @@ KEYWORDS="-*"
 IUSE=""
 
 RDEPEND=">=sys-apps/einit-9999
-	x11-libs/libnotify"
+	x11-libs/libnotify
+	x11-themes/gnome-icon-theme"
 DEPEND="${RDEPEND}
 		dev-util/scons"
 
