@@ -4,7 +4,7 @@
 
 inherit eutils git python
 
-EGIT_REPO_URI="git://git.einit.org/extras/einit-libnotify.git"
+EGIT_REPO_URI="git://git.einit.org/extras/systray.git"
 SRC_URI=""
 
 DESCRIPTION="Libnotify based feedback daemon for eINIT"
