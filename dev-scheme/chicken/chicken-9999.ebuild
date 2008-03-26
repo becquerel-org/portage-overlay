@@ -57,9 +57,17 @@ src_install() {
 	unset A
 
 	emake ${OPTIONS} DESTDIR="${D}" install || die
+
 	dodoc ChangeLog* NEWS
+
 	dohtml -r html/
-	rm -rf "${D}"/$(get_libdir)/einit/chicken/share/doc
+	rm -rf "${D}"/$(get_libdir)/einit/chicken/share/chicken/doc
+
+	doman *.1
+	rm -rf "${D}"/$(get_libdir)/einit/chicken/share/man
+
+	doinfo chicken.info
+	rm -rf "${D}"/$(get_libdir)/einit/chicken/share/info
 
 	keepdir /$(get_libdir)/einit/chicken/lib/chicken/3
 
