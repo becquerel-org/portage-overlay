@@ -15,7 +15,8 @@ KEYWORDS="-*"
 IUSE="testing"
 
 RDEPEND=">=sys-apps/einit-0.40.0
-		 >=dev-scheme/guile-1.8"
+		 >=dev-scheme/guile-1.8
+		 testing? ( =dev-scheme/chicken-9999 )"
 DEPEND="${RDEPEND}
 		dev-util/scons"
 
