@@ -21,16 +21,10 @@ DEPEND=">=dev-libs/libpcre-7.6
 
 SITEFILE=50hen-gentoo.el
 
-pkg_setup() {
-	einfo "This is a modified version of the live chicken ebuild"
-	einfo "to use in eINIT development, which installs in /$(get_libdir)/einit/chicken"
-	einfo "Do not report bugs with this ebuild to b.g.o. !"
-}
-
 src_unpack() {
 	subversion_fetch || die
 	cd "${S}"
-	#sed -i -e "s:/lib:/$(get_libdir):g" defaults.make
+	sed -i -e "s:/lib:/$(get_libdir):g" defaults.make
 }
 
 src_compile() {
@@ -38,13 +32,14 @@ src_compile() {
 
 	set > /tmp/envvars
 
-	OPTIONS="PLATFORM=linux PREFIX=/$(get_libdir)/einit/chicken"
+	OPTIONS="PLATFORM=linux PREFIX=/usr"
 
 	# all this is necessary for bootstrapping from svn. yes, I asked :P
 	emake ${OPTIONS} confclean || die
 	emake ${OPTIONS} spotless  || die
 	emake ${OPTIONS} bootstrap || die
 	emake ${OPTIONS} confclean || die
+	OPTIONS="${OPTIONS} USE_HOST_PCRE=1"
 	emake ${OPTIONS} C_COMPILER_OPTIMIZATION_OPTIONS="${CFLAGS}" CHICKEN=./chicken-boot || die
 
 	use emacs && elisp-comp hen.el
@@ -57,27 +52,16 @@ src_install() {
 	unset A
 
 	emake ${OPTIONS} DESTDIR="${D}" install || die
-
 	dodoc ChangeLog* NEWS
-
 	dohtml -r html/
-	rm -rf "${D}"/$(get_libdir)/einit/chicken/share/chicken/doc
+	rm -rf "${D}"/usr/share/chicken/doc
 
-	doman *.1
-	rm -rf "${D}"/$(get_libdir)/einit/chicken/share/man
+        # put a .keep in the default egg repository
+        #touch .keep
+        #insinto /usr/$(get_libdir)/chicken/3
+        #doins .keep
 
-	doinfo chicken.info
-	rm -rf "${D}"/$(get_libdir)/einit/chicken/share/info
-
-	keepdir /$(get_libdir)/einit/chicken/lib/chicken/3
-
-	cat > 50chicken <<- EOF
-PATH="/$(get_libdir)/einit/chicken/bin"
-ROOTPATH="/$(get_libdir)/einit/chicken/bin"
-LDPATH="/$(get_libdir)/einit/chicken/lib"
-EOF
-
-	doenvd 50chicken
+	keepdir /usr/$(get_libdir)/chicken/3
 
 	if use emacs; then
 		elisp-install ${PN} *.{el,elc}
@@ -86,17 +70,9 @@ EOF
 }
 
 pkg_postinst() {
-	ewarn "This ebuild installs /etc/env.d/50chicken to setup its paths."
-	ewarn "Remember to remove if you switch to the normal chicken ebuilds!"
-	ewarn "If you used the default egg repository path, you will have to"
-	ewarn "uninstall and reinstall all eggs. Sorry."
 	use emacs && elisp-site-regen
 }
 
 pkg_postrm() {
-	ewarn "This ebuild installs /etc/env.d/50chicken to setup its paths."
-	ewarn "Remember to remove if you switch to the normal chicken ebuilds!"
-	ewarn "If you used the default egg repository path, you will have to"
-	ewarn "uninstall and reinstall all eggs. Sorry."
 	use emacs && elisp-site-regen
 }
