@@ -30,6 +30,9 @@ PDEPEND="=sys-apps/einit-modules-xml-9999
 S=${WORKDIR}/${PN}
 
 pkg_setup() {
+	strip-flags
+	filter-ldflags -Wl,--*dtags* -Wl,*-z*
+
 	enewgroup einit
 	ewarn
 	ewarn "WARNING: This is a live GIT build!!!"
@@ -49,8 +52,6 @@ pkg_setup() {
 	if use debug; then
 		CFLAGS="${CFLAGS} -g"
 	fi
-	strip-flags
-	filter-ldflags -Wl,--*dtags* -Wl,*-z*
 }
 
 src_unpack() {
