@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils git python
+inherit eutils git
 
 EGIT_REPO_URI="git://git.einit.org/extras/systray.git"
 SRC_URI=""
@@ -25,14 +25,12 @@ S=${WORKDIR}/${PN}
 
 src_unpack() {
 	git_src_unpack
-	python_version
 }
 
 src_compile() {
-	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} || die
+	emake
 }
 
 src_install() {
-	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} install || die
-	#dodoc AUTHORS COPYING ChangeLog README
+	emake DESTDIR="${D}" install
 }
