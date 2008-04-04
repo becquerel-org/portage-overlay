@@ -36,6 +36,9 @@ pkg_setup() {
 	fi
 	strip-flags
 	filter-ldflags -Wl,--*dtags* -Wl,*-z*
+	if use testing; then
+		filter-flags -fomit-frame-pointer
+	fi
 }
 
 src_unpack() {
