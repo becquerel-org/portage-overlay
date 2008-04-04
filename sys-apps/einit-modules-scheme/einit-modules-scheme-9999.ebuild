@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils git python
+inherit eutils git python flag-o-matic
 
 EGIT_REPO_URI="git://git.einit.org/modules/scheme.git"
 
@@ -15,7 +15,8 @@ KEYWORDS="-*"
 IUSE="testing"
 
 RDEPEND=">=sys-apps/einit-0.40.0
-		 >=dev-scheme/guile-1.8"
+		!testing? ( >=dev-scheme/guile-1.8 )
+		 testing? ( =dev-scheme/chicken-9999 )"
 DEPEND="${RDEPEND}
 		dev-util/scons"
 
@@ -32,6 +33,11 @@ pkg_setup() {
 		einfo "selected 'testing' GIT branch"
 		EGIT_BRANCH='testing'
 		EGIT_TREE='testing'
+	fi
+	strip-flags
+	filter-ldflags -Wl,--*dtags* -Wl,*-z*
+	if use testing; then
+		filter-flags -fomit-frame-pointer
 	fi
 }
 

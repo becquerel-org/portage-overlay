@@ -8,7 +8,7 @@ EAPI="1"
 # eINIT GIT ebuild (v2)
 #
 
-inherit eutils git python
+inherit eutils git python flag-o-matic
 
 EGIT_REPO_URI="git://git.einit.org/core.git"
 
@@ -30,6 +30,9 @@ PDEPEND="=sys-apps/einit-modules-xml-9999
 S=${WORKDIR}/${PN}
 
 pkg_setup() {
+	strip-flags
+	filter-ldflags -Wl,--*dtags* -Wl,*-z*
+
 	enewgroup einit
 	ewarn
 	ewarn "WARNING: This is a live GIT build!!!"
@@ -41,8 +44,9 @@ pkg_setup() {
 		EGIT_TREE='testing'
 	fi
 
-	if [ $(getconf GNU_LIBPTHREAD_VERSION | cut -d " " -f 1) != "NPTL" ]; then
-		break;
+	if ! use testing && \
+		[[ $(getconf GNU_LIBPTHREAD_VERSION | cut -d " " -f 1) != "NPTL" ]]; then
+		die "eINIT needs NPTL threading."
 	fi
 
 	if use debug; then

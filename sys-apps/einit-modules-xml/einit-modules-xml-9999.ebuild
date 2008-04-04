@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils git python
+inherit eutils git python flag-o-matic
 
 EGIT_REPO_URI="git://git.einit.org/modules/xml-sh.git"
 
@@ -29,6 +29,8 @@ pkg_setup() {
 		EGIT_BRANCH='testing'
 		EGIT_TREE='testing'
 	fi
+	strip-flags
+	filter-ldflags -Wl,--*dtags* -Wl,*-z*
 }
 
 src_unpack() {
