@@ -8,7 +8,7 @@ EAPI="1"
 # eINIT GIT ebuild (v2)
 #
 
-inherit eutils git python
+inherit eutils git python flag-o-matic
 
 EGIT_REPO_URI="git://git.einit.org/core.git"
 
@@ -49,6 +49,8 @@ pkg_setup() {
 	if use debug; then
 		CFLAGS="${CFLAGS} -g"
 	fi
+	strip-flags
+	filter-ldflags -Wl,--*dtags* -Wl,*-z*
 }
 
 src_unpack() {
