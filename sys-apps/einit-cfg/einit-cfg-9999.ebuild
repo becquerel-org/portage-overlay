@@ -6,10 +6,10 @@ EAPI="1"
 
 inherit flag-o-matic git python
 
-EGIT_REPO_URI="git://git.einit.org/cfg.git"
+EGIT_REPO_URI="git://git.jyujin.de/einit/cfg.git"
 
 DESCRIPTION="eINIT-cfg - the eINIT configuration tool."
-HOMEPAGE="http://einit.org/"
+HOMEPAGE="http://einit.jyujin.de/"
 
 LICENSE="BSD"
 SLOT="0"

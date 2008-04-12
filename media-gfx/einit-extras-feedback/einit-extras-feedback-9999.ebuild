@@ -4,11 +4,11 @@
 
 inherit eutils git python
 
-EGIT_REPO_URI="git://git.einit.org/extras/feedback.git"
+EGIT_REPO_URI="git://git.jyujin.de/einit/extras/feedback.git"
 SRC_URI=""
 
 DESCRIPTION="Package with additional feedback daemons for eINIT"
-HOMEPAGE="http://einit.org/"
+HOMEPAGE="http://einit.jyujin.de/"
 
 LICENSE="BSD"
 SLOT="0"

@@ -10,10 +10,10 @@ EAPI="1"
 
 inherit eutils git python flag-o-matic
 
-EGIT_REPO_URI="git://git.einit.org/core.git"
+EGIT_REPO_URI="git://git.jyujin.de/einit/core.git"
 
 DESCRIPTION="eINIT - an alternate /sbin/init"
-HOMEPAGE="http://einit.org/"
+HOMEPAGE="http://einit.jyujin.de/"
 
 LICENSE="BSD"
 SLOT="0"
@@ -81,6 +81,6 @@ pkg_postinst() {
 	einfo "To use einit as a non-root user, add that user to the group 'einit'."
 	einfo
 	einfo "You can always find the latest documentation at"
-	einfo "http://einit.org/"
+	einfo "http://einit.jyujin.de/"
 	einfo
 }

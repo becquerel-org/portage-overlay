@@ -4,10 +4,10 @@
 
 inherit eutils git python flag-o-matic
 
-EGIT_REPO_URI="git://git.einit.org/modules/scheme.git"
+EGIT_REPO_URI="git://git.jyujin.de/einit/modules/scheme.git"
 
 DESCRIPTION="Scheme modules for eINIT"
-HOMEPAGE="http://einit.org/"
+HOMEPAGE="http://einit.jyujin.de/"
 
 LICENSE="BSD"
 SLOT="0"
