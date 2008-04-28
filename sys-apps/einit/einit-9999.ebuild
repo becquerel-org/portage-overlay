@@ -23,7 +23,7 @@ IUSE="debug +relaxng testing scheme"
 
 DEPEND="${RDEPEND}
 		dev-util/scons"
-PDEPEND="=sys-apps/einit-modules-xml-9999
+PDEPEND="=sys-apps/einit-modules-simple-9999
 		 relaxng? ( app-text/rnv )
 		 scheme? ( =sys-apps/einit-modules-scheme-9999 )"
 
