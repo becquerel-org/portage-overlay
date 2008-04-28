@@ -4,9 +4,9 @@
 
 inherit eutils git python flag-o-matic
 
-EGIT_REPO_URI="git://git.jyujin.de/einit/modules/xml-sh.git"
+EGIT_REPO_URI="git://git.jyujin.de/einit/modules/simple.git"
 
-DESCRIPTION=".xml modules for eINIT"
+DESCRIPTION="Simple modules for eINIT"
 HOMEPAGE="http://einit.jyujin.de/"
 
 LICENSE="BSD"
