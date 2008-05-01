@@ -16,11 +16,11 @@ IUSE="testing"
 
 RDEPEND=">=sys-apps/einit-0.40.0
 		!testing? ( >=dev-scheme/guile-1.8 )
-		 testing? ( =dev-scheme/chicken-9999 )"
+		testing? ( >=dev-scheme/chicken-3.2.0 )"
 DEPEND="${RDEPEND}
 		dev-util/scons"
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}"/${PN}
 
 pkg_setup() {
 	if ! built_with_use "dev-scheme/guile" 'threads' ; then
@@ -47,10 +47,10 @@ src_unpack() {
 }
 
 src_compile() {
-	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} || die
+	scons libdir=$(get_libdir) destdir="${D}/${ROOT}/" prefix="${ROOT}" || die
 }
 
 src_install() {
-	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ prefix=${ROOT} install || die
+	scons libdir=$(get_libdir) destdir="${D}/${ROOT}/" prefix="${ROOT}" install || die
 	dodoc README
 }
