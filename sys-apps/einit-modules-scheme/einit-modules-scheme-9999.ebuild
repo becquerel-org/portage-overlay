@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}"/${PN}
 
 pkg_setup() {
-	if ! built_with_use "dev-scheme/guile" 'threads' ; then
+	if ! use testing && ! built_with_use "dev-scheme/guile" 'threads' ; then
 		die "you need to build guile with USE='threads'"
 	fi
 	ewarn
