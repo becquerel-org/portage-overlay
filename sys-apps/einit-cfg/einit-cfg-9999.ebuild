@@ -17,19 +17,37 @@ KEYWORDS="-*"
 
 IUSE=""
 
-RDEPEND="=sys-apps/einit-9999
-	 app-text/xmlstarlet"
+RDEPEND="
+	dev-util/scons
+	sys-apps/einit
+"
 DEPEND="${RDEPEND}"
 
 src_unpack() {
-	git_src_unpack
-	python_version
+	git_src_unpack || die
+	python_version || die
 }
 
 src_compile() {
-	scons ${MAKEOPTS:--j2} destdir=${D}/${ROOT}/ || die
+	scons -f buildscript ${MAKEOPTS:--j2} release=1 || die
 }
 
 src_install() {
-	scons destdir=${D}/${ROOT}/ install || die
+	scons -f buildscript release=1 destdir=${D}/${ROOT}/ libdir=$(get_libdir) install || die
+
+	mkdir -p ${D}/${ROOT}/bin
+	ln -s ../$(get_libdir)/einit-cfg/einit-cfg ${D}/${ROOT}/bin/einit-cfg
+}
+
+pkg_postinst() {
+	einfo
+	einfo "Warning: This is highly experimental alpha quality software."
+	einfo "Please backup your /etc/einit/modes.xml before using it"
+	einfo "and review changes it makes."
+	einfo
+	einfo "Currently only CLI interface is built."
+	einfo "See einit-cfg help for further information."
+	einfo
+	einfo "Blame & support: squeaky_pl #einit@freenode"
+	einfo
 }
