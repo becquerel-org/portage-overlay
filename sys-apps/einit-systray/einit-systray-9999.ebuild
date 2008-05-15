@@ -32,4 +32,5 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" install
+	ln -sfv /lib/einit/bin/einit-systray /usr/bin/einit-systray
 }
