@@ -4,7 +4,7 @@
 
 inherit eutils git
 
-EGIT_REPO_URI="git://git.jyujin.de/srv/einit/extras/systray.git"
+EGIT_REPO_URI="git://git.jyujin.de/einit/extras/systray.git"
 SRC_URI=""
 
 DESCRIPTION="Libnotify based feedback daemon for eINIT"
