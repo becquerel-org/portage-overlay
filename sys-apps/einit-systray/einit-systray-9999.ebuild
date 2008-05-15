@@ -11,24 +11,16 @@ HOMEPAGE="http://einit.jyujin.de/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-*"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND=">=sys-apps/einit-9999
-	x11-libs/libnotify
-	x11-themes/gnome-icon-theme"
+		 x11-libs/libnotify
+		 x11-themes/gnome-icon-theme"
 DEPEND="${RDEPEND}
 		dev-util/scons"
 
-S=${WORKDIR}/${PN}
-
-src_unpack() {
-	git_src_unpack
-}
-
-src_compile() {
-	emake
-}
+S="${WORKDIR}"/${PN}
 
 src_install() {
 	emake DESTDIR="${D}" install
