@@ -24,5 +24,5 @@ S="${WORKDIR}"/${PN}
 
 src_install() {
 	emake DESTDIR="${D}" install
-	ln -sfv /lib/einit/bin/einit-systray /usr/bin/einit-systray
+	dosym "${D}"/lib/einit/bin/einit-systray "${D}"/usr/bin/einit-systray
 }
