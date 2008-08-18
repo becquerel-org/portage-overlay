@@ -29,6 +29,11 @@ src_compile() {
 	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ library || die
 }
 
+src_test() {
+	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ || die
+	./run-tests || die
+}
+
 src_install() {
 	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ install || die
 	dodoc AUTHORS COPYING CREDITS README
