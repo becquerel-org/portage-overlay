@@ -9,8 +9,7 @@ SLOT="0"
 KEYWORDS="-*"
 IUSE=""
 
-DEPEND="${RDEPEND}
-	dev-util/scons"
+DEPEND="dev-util/scons"
 
 S=${WORKDIR}/${P}
 

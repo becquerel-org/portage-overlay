@@ -1,6 +1,6 @@
-inherit git
+inherit git eutils
 
-EGIT_REPO_URI="git://git.jyujin.de/atomic-libc.git"
+EGIT_REPO_URI="git://git.jyujin.de/curie.git"
 
 DESCRIPTION="A minimalistic, sexpr-based, non-posix(!) libc"
 HOMEPAGE="http://kyuba.org/"
