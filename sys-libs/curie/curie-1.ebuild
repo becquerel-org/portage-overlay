@@ -6,7 +6,7 @@ SRC_URI="http://hamiltonshells.ca/~jyujin/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-*"
+KEYWORDS="~ppc ~x86 ~amd64"
 IUSE=""
 
 DEPEND="dev-util/scons"
