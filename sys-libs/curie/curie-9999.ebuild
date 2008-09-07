@@ -43,7 +43,7 @@ src_install() {
 	dodoc AUTHORS COPYING CREDITS README
 
 	if use doc; then
-		for i in documentation/doxygen/man/man2/*; do
+		for i in documentation/doxygen/man/man3/*; do
 			doman ${i}
 		done
 	fi
