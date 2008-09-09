@@ -28,6 +28,8 @@ src_unpack() {
 
 src_compile() {
 	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ library || die
+        scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ library++ || die
+
 	if use doc; then
 		doxygen
 	fi
