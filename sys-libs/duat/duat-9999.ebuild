@@ -10,7 +10,7 @@ SLOT="0"
 KEYWORDS="-*"
 IUSE="doc"
 
-RDEPEND=">=dev-libs/curie-2"
+RDEPEND=">=sys-libs/curie-2"
 
 DEPEND="${RDEPEND}
 	dev-util/scons
