@@ -9,7 +9,7 @@ SLOT="0"
 KEYWORDS="~ppc ~x86 ~amd64"
 IUSE="doc"
 
-RDEPEND="=sys-libs/curie-2"
+RDEPEND=">=sys-libs/curie-3"
 
 DEPEND="${RDEPEND}
 	dev-util/scons
