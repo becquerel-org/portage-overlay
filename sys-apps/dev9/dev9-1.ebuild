@@ -4,7 +4,7 @@ SRC_URI="http://kyuba.org/files/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-*"
+KEYWORDS="~x86 ~amd64"
 IUSE="doc"
 
 RDEPEND=">=sys-libs/curie-3

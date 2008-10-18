@@ -12,7 +12,7 @@ HOMEPAGE="http://einit.jyujin.de/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-*"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND=">=sys-apps/einit-0.40.0"

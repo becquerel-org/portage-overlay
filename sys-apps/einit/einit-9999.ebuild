@@ -17,7 +17,7 @@ HOMEPAGE="http://einit.jyujin.de/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-*"
+KEYWORDS=""
 
 IUSE="debug +relaxng testing scheme"
 

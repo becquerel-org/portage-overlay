@@ -7,7 +7,7 @@ HOMEPAGE="http://kyuba.org/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-*"
+KEYWORDS=""
 IUSE="doc"
 
 DEPEND="${RDEPEND}
