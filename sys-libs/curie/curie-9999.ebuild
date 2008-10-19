@@ -41,7 +41,7 @@ src_test() {
 }
 
 src_install() {
-	scons libdir=$(get_libdir) destdir=${D}/$ install || die
+	scons libdir=$(get_libdir) destdir=${D}/ install || die
         scons libdir=$(get_libdir) hosted=yes destdir=${D}/ install || die
 
 	dodoc AUTHORS COPYING CREDITS README
