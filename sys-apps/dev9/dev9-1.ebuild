@@ -14,11 +14,11 @@ DEPEND="${RDEPEND}
         dev-util/scons"
 
 src_compile() {
-	scons destdir=${D}/${ROOT}/ programme || die
+	scons destdir=${D}/ programme || die
 }
 
 src_install() {
-	scons destdir=${D}/${ROOT}/ install || die
+	scons destdir=${D}/ install || die
 	dodoc AUTHORS COPYING CREDITS README
 }
 

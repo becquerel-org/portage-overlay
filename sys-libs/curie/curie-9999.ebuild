@@ -27,8 +27,8 @@ src_unpack() {
 }
 
 src_compile() {
-	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ library || die
-        scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ library++ || die
+	scons libdir=$(get_libdir) destdir=${D}/ library || die
+        scons libdir=$(get_libdir) destdir=${D}/ library++ || die
 
 	if use doc; then
 		doxygen
@@ -36,13 +36,13 @@ src_compile() {
 }
 
 src_test() {
-	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ || die
+	scons libdir=$(get_libdir) destdir=${D}/ || die
 	./run-tests || die
 }
 
 src_install() {
-	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ install || die
-        scons libdir=$(get_libdir) hosted=yes destdir=${D}/${ROOT}/ install || die
+	scons libdir=$(get_libdir) destdir=${D}/$ install || die
+        scons libdir=$(get_libdir) hosted=yes destdir=${D}/ install || die
 
 	dodoc AUTHORS COPYING CREDITS README
 

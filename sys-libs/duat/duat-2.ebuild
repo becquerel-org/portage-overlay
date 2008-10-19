@@ -18,7 +18,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${P}
 
 src_compile() {
-	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ library || die
+	scons libdir=$(get_libdir) destdir=${D}/ library || die
 
 	if use doc; then
 		doxygen
@@ -26,7 +26,7 @@ src_compile() {
 }
 
 src_install() {
-	scons libdir=$(get_libdir) destdir=${D}/${ROOT}/ install || die
+	scons libdir=$(get_libdir) destdir=${D}/ install || die
 	dodoc AUTHORS COPYING CREDITS README
 
 	if use doc; then
