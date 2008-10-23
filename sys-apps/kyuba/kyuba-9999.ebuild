@@ -1,6 +1,6 @@
 inherit git
 
-EGIT_REPO_URI="git://git.kyuba.org/kyuba.git"
+EGIT_REPO_URI="git://git.kyuba.org/core.git"
 
 DESCRIPTION="The Kyuba Init Daemons"
 HOMEPAGE="http://kyuba.org/"
