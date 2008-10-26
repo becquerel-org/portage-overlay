@@ -8,11 +8,12 @@ HOMEPAGE="http://kyuba.org/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc"
+IUSE="doc debug valgrind"
 
 DEPEND="${RDEPEND}
 	dev-util/scons
-        doc? ( app-doc/doxygen )"
+        doc? ( app-doc/doxygen )
+	valgrind? ( dev-util/valgrind )"
 
 S=${WORKDIR}/${PN}
 
@@ -22,13 +23,27 @@ pkg_setup() {
 	ewarn
 }
 
+scons_flags() {
+	scons_params=""
+
+	if use debug; then
+		scons_params="${scons_params} debug=yes"
+	fi
+
+	if use valgrind; then
+		scons_params="${scons_params} debugMemory=yes"
+	fi
+}
+
 src_unpack() {
 	git_src_unpack || die
 }
 
 src_compile() {
-	scons libdir=$(get_libdir) destdir=${D}/ library || die
-        scons libdir=$(get_libdir) destdir=${D}/ library++ || die
+	scons_flags
+
+	scons libdir=$(get_libdir) destdir=${D}/ ${scons_params} library || die
+        scons libdir=$(get_libdir) destdir=${D}/ ${scons_params} library++ || die
 
 	if use doc; then
 		doxygen
@@ -36,13 +51,17 @@ src_compile() {
 }
 
 src_test() {
-	scons libdir=$(get_libdir) destdir=${D}/ || die
+	scons_flags
+
+	scons libdir=$(get_libdir) destdir=${D}/ ${scons_params} || die
 	./run-tests || die
 }
 
 src_install() {
-	scons libdir=$(get_libdir) destdir=${D}/ install || die
-        scons libdir=$(get_libdir) hosted=yes destdir=${D}/ install || die
+	scons_flags
+
+	scons libdir=$(get_libdir) destdir=${D}/ ${scons_params} install || die
+        scons libdir=$(get_libdir) hosted=yes destdir=${D}/ ${scons_params} install || die
 
 	dodoc AUTHORS COPYING CREDITS README
 

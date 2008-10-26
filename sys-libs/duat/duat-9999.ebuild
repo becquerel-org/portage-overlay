@@ -8,7 +8,7 @@ HOMEPAGE="http://kyuba.org/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc"
+IUSE="doc debug"
 
 RDEPEND=">=sys-libs/curie-2"
 
@@ -24,12 +24,21 @@ pkg_setup() {
 	ewarn
 }
 
+scons_flags() {
+	scons_params=""
+	if use debug; then
+		scons_params="${scons_params} debug=yes"
+	fi
+}
+
 src_unpack() {
 	git_src_unpack || die
 }
 
 src_compile() {
-	scons libdir=$(get_libdir) destdir=${D}/ library || die
+	scons_flags
+
+	scons libdir=$(get_libdir) destdir=${D}/ ${scons_params} library || die
 
 	if use doc; then
 		doxygen
@@ -37,7 +46,9 @@ src_compile() {
 }
 
 src_install() {
-	scons libdir=$(get_libdir) destdir=${D}/ install || die
+	scons_flags
+
+	scons libdir=$(get_libdir) destdir=${D}/ ${scons_params} install || die
 	dodoc AUTHORS COPYING CREDITS README
 
 	if use doc; then
