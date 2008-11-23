@@ -29,11 +29,11 @@ src_unpack() {
 }
 
 src_compile() {
-	icemake ${icemake_flags} -Ld ${D}/usr ||die
+	icemake ${icemake_flags} -Ld ${D}||die
 }
 
 src_install() {
-	icemake ${icemake_flags} -Ldif ${D}/usr ||die
+	icemake ${icemake_flags} -Ldif ${D}||die
 
 	dodoc AUTHORS COPYING CREDITS README
 }
