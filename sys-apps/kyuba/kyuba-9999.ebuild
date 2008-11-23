@@ -14,7 +14,7 @@ RDEPEND=">=sys-libs/curie-4
          >=sys-libs/duat-4"
 
 DEPEND="${RDEPEND}
-	dev-util/scons"
+	sys-devel/icemake"
 
 S=${WORKDIR}/${PN}
 
@@ -24,26 +24,16 @@ pkg_setup() {
 	ewarn
 }
 
-scons_flags() {
-	scons_params=""
-	if use debug; then
-		scons_params="${scons_params} debug=yes"
-	fi
-}
-
 src_unpack() {
 	git_src_unpack || die
 }
 
 src_compile() {
-	scons_flags
-
-	scons destdir=${D}/ ${scons_params} programme || die
+	icemake ${icemake_flags} -Ld ${D}/usr ||die
 }
 
 src_install() {
-	scons_flags
+	icemake ${icemake_flags} -Ldif ${D}/usr ||die
 
-	scons destdir=${D}/ ${scons_params} install || die
 	dodoc AUTHORS COPYING CREDITS README
 }

@@ -8,13 +8,13 @@ HOMEPAGE="http://kyuba.org/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc debug"
+IUSE="doc"
 
-RDEPEND=">=sys-libs/curie-2"
+RDEPEND=">=sys-libs/curie-4"
 
 DEPEND="${RDEPEND}
-	dev-util/scons
-        doc? ( app-doc/doxygen )"
+	sys-devel/icemake
+	doc? ( app-doc/doxygen )"
 
 S=${WORKDIR}/${PN}
 
@@ -24,21 +24,12 @@ pkg_setup() {
 	ewarn
 }
 
-scons_flags() {
-	scons_params=""
-	if use debug; then
-		scons_params="${scons_params} debug=yes"
-	fi
-}
-
 src_unpack() {
 	git_src_unpack || die
 }
 
 src_compile() {
-	scons_flags
-
-	scons libdir=$(get_libdir) destdir=${D}/ ${scons_params} library || die
+	icemake ${icemake_flags} -Ld ${D}/usr ||die
 
 	if use doc; then
 		doxygen
@@ -46,9 +37,8 @@ src_compile() {
 }
 
 src_install() {
-	scons_flags
+	icemake ${icemake_flags} -Ldif ${D}/usr ||die
 
-	scons libdir=$(get_libdir) destdir=${D}/ ${scons_params} install || die
 	dodoc AUTHORS COPYING CREDITS README
 
 	if use doc; then
