@@ -11,7 +11,7 @@ KEYWORDS=""
 IUSE="doc debug valgrind"
 
 DEPEND="${RDEPEND}
-	sys-devel/icemake-9999
+	sys-devel/icemake
 	doc? ( app-doc/doxygen )
 	valgrind? ( dev-util/valgrind )"
 
