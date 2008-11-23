@@ -2,7 +2,7 @@ inherit git eutils
 
 EGIT_REPO_URI="git://git.kyuba.org/curie.git"
 
-DESCRIPTION="A minimalistic, sexpr-based, non-posix(!) libc"
+DESCRIPTION="A minimalistic, sexpr-based, non-posix(!), non-ansi(!) libc"
 HOMEPAGE="http://kyuba.org/"
 
 LICENSE="BSD"
@@ -11,8 +11,8 @@ KEYWORDS=""
 IUSE="doc debug valgrind"
 
 DEPEND="${RDEPEND}
-	dev-util/scons
-        doc? ( app-doc/doxygen )
+	sys-devel/icemake-9999
+	doc? ( app-doc/doxygen )
 	valgrind? ( dev-util/valgrind )"
 
 S=${WORKDIR}/${PN}
@@ -23,15 +23,15 @@ pkg_setup() {
 	ewarn
 }
 
-scons_flags() {
-	scons_params=""
+icemake_flags() {
+	icemake_params=""
 
 	if use debug; then
-		scons_params="${scons_params} debug=yes"
+		icemake_params="${icemake_params} -D"
 	fi
 
 	if use valgrind; then
-		scons_params="${scons_params} debugMemory=yes"
+		icemake_params="${icemake_params} -V"
 	fi
 }
 
@@ -40,10 +40,9 @@ src_unpack() {
 }
 
 src_compile() {
-	scons_flags
+	icemake_flags
 
-	scons libdir=$(get_libdir) destdir=${D}/ ${scons_params} library || die
-        scons libdir=$(get_libdir) destdir=${D}/ ${scons_params} library++ || die
+	icemake curie curie++ ${icemake_flags}  -Ld ${D}/usr ||die
 
 	if use doc; then
 		doxygen
@@ -51,17 +50,15 @@ src_compile() {
 }
 
 src_test() {
-	scons_flags
+	icemake_flags
 
-	scons libdir=$(get_libdir) destdir=${D}/ ${scons_params} || die
-	./run-tests || die
+	icemake curie curie++ ${icemake_flags} -Ldr ${D}/usr ||die
 }
 
 src_install() {
-	scons_flags
+	icemake_flags
 
-	scons libdir=$(get_libdir) destdir=${D}/ ${scons_params} install || die
-        scons libdir=$(get_libdir) hosted=yes destdir=${D}/ ${scons_params} install || die
+	icemake curie curie++ ${icemake_flags} -Ldif ${D}/usr ||die
 
 	dodoc AUTHORS COPYING CREDITS README
 
