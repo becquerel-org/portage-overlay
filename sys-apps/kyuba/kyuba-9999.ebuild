@@ -10,7 +10,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="doc debug"
 
-RDEPEND=">=sys-libs/curie-4
+RDEPEND=">=sys-libs/curie-5
          >=sys-libs/duat-4"
 
 DEPEND="${RDEPEND}
