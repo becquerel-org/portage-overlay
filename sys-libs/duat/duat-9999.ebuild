@@ -10,7 +10,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="doc"
 
-RDEPEND=">=sys-libs/curie-4"
+RDEPEND=">=sys-libs/curie-5"
 
 DEPEND="${RDEPEND}
 	sys-devel/icemake
