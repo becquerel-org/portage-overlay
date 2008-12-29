@@ -29,11 +29,11 @@ src_unpack() {
 }
 
 src_compile() {
-	icemake ${icemake_flags} -Ldb ${D} kyu||die
+	icemake ${icemake_flags} -Ld ${D}||die
 }
 
 src_install() {
-	icemake ${icemake_flags} -Ldifb ${D} kyu||die
+	icemake ${icemake_flags} -Ldib ${D} kyu||die
 
 	dodoc AUTHORS COPYING CREDITS README
 }
