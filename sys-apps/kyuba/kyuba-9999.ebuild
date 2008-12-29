@@ -10,7 +10,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="doc debug"
 
-RDEPEND=">=sys-libs/curie-5
+RDEPEND=">=sys-libs/curie-6
          >=sys-libs/duat-4"
 
 DEPEND="${RDEPEND}
@@ -29,11 +29,11 @@ src_unpack() {
 }
 
 src_compile() {
-	icemake ${icemake_flags} -Ld ${D}/lib/kyu||die
+	icemake ${icemake_flags} -Ldb ${D} kyu||die
 }
 
 src_install() {
-	icemake ${icemake_flags} -Ldif ${D}/lib/kyu||die
+	icemake ${icemake_flags} -Ldifb ${D} kyu||die
 
 	dodoc AUTHORS COPYING CREDITS README
 }
