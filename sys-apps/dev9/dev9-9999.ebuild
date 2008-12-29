@@ -10,11 +10,11 @@ SLOT="0"
 KEYWORDS=""
 IUSE="doc debug"
 
-RDEPEND=">=sys-libs/curie-3
-         >=sys-libs/duat-4"
+RDEPEND=">=sys-libs/curie-6
+         >=sys-libs/duat-5"
 
 DEPEND="${RDEPEND}
-	sys-devel/icemake"
+	>=sys-devel/icemake-6"
 
 S=${WORKDIR}/${PN}
 

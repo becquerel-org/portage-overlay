@@ -10,10 +10,10 @@ SLOT="0"
 KEYWORDS=""
 IUSE="doc"
 
-RDEPEND=">=sys-libs/curie-5"
+RDEPEND=">=sys-libs/curie-6"
 
 DEPEND="${RDEPEND}
-	sys-devel/icemake
+	>=sys-devel/icemake-6
 	doc? ( app-doc/doxygen )"
 
 S=${WORKDIR}/${PN}

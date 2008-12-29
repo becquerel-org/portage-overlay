@@ -42,7 +42,7 @@ src_unpack() {
 src_compile() {
 	icemake_flags
 
-	icemake curie curie++ ${icemake_flags}  -Ld ${D}/usr ||die
+	icemake curie curie++ syscall ${icemake_flags}  -Ld ${D}/usr ||die
 
 	if use doc; then
 		doxygen
@@ -52,13 +52,13 @@ src_compile() {
 src_test() {
 	icemake_flags
 
-	icemake curie curie++ ${icemake_flags} -Ldr ${D}/usr ||die
+	icemake curie curie++ syscall ${icemake_flags} -Ldr ${D}/usr ||die
 }
 
 src_install() {
 	icemake_flags
 
-	icemake curie curie++ ${icemake_flags} -Ldif ${D}/usr ||die
+	icemake curie curie++ syscall ${icemake_flags} -Ldif ${D}/usr ||die
 
 	dodoc AUTHORS COPYING CREDITS README
 

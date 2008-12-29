@@ -14,7 +14,7 @@ RDEPEND=">=sys-libs/curie-6
          >=sys-libs/duat-4"
 
 DEPEND="${RDEPEND}
-	sys-devel/icemake"
+	>=sys-devel/icemake-6"
 
 S=${WORKDIR}/${PN}
 
