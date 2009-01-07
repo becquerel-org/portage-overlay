@@ -11,7 +11,7 @@ KEYWORDS=""
 IUSE="doc debug valgrind"
 
 DEPEND="${RDEPEND}
-	sys-devel/icemake
+	>=sys-devel/icemake-6
 	doc? ( app-doc/doxygen )
 	valgrind? ( dev-util/valgrind )"
 
@@ -63,7 +63,7 @@ src_install() {
 	dodoc AUTHORS COPYING CREDITS README
 
 	if use doc; then
-		for i in documentation/doxygen/man/man3c/*; do
+		for i in documentation/doxygen/man/*/*; do
 			doman ${i}
 		done
 	fi
