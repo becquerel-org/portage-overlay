@@ -8,7 +8,7 @@ HOMEPAGE="http://kyuba.org/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc debug valgrind"
+IUSE="doc debug valgrind combine"
 
 DEPEND="${RDEPEND}
 	>=sys-devel/icemake-6
@@ -32,6 +32,10 @@ icemake_flags() {
 
 	if use valgrind; then
 		icemake_params="${icemake_params} -V"
+	fi
+
+	if use combine; then
+		icemake_params="${icemake_params} -c"
 	fi
 }
 
