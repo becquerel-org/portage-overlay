@@ -7,16 +7,14 @@ LICENSE="BSD"
 KEYWORDS=""
 S=${WORKDIR}/${PN}
 
-kyuba_org_git_pkg_setup() {
+EXPORT_FUNCTIONS pkg_setup src_unpack
+
+kyuba-org-git_pkg_setup() {
     ewarn
     ewarn "WARNING: This is a live GIT build"
     ewarn
 }
 
-pkg_setup() {
-    kyuba_org_git_pkg_setup
-}
-
-src_unpack() {
+kyuba-org-git_src_unpack() {
     git_src_unpack || die
 }

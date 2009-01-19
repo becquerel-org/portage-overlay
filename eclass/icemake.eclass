@@ -7,6 +7,8 @@ DEPEND="${DEPEND}
 ICEMAKE_TARGETS=""
 ICEMAKE_PREFIX="/usr"
 
+EXPORT_FUNCTIONS src_compile src_test src_install
+
 icemake_flags() {
     local icemake_params=""
 
@@ -43,16 +45,4 @@ icemake_src_install() {
             doman ${i}
         done
     fi
-}
-
-src_compile() {
-    icemake_src_compile
-}
-
-src_test() {
-    icemake_src_test
-}
-
-src_install() {
-    icemake_src_install
 }
