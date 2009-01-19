@@ -44,6 +44,10 @@ icemake_src_install() {
         if [ -d ${D}/${i} ]; then
             mkdir ${D}/usr/${i}
             mv ${D}/${i}/*.a ${D}/usr/${i}
+
+            if [ -d ${D}/${i}/pkgconfig ]; then
+                mv ${D}/${i}/pkgconfig ${D}/usr/${i}
+            fi
         fi
     done
 
