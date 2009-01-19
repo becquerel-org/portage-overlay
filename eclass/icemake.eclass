@@ -42,9 +42,8 @@ icemake_src_test() {
 
 icemake_src_install() {
     if use non-fhs; then
-        if [ -z "${ICEMAKE_ALTERNATE_FHS}" ]; then
-            icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
-                -Ldis "${D}${ICEMAKE_PREFIX}"||die
+        icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
+            -Ldis "${D}${ICEMAKE_PREFIX}"||die
     else
         if [ -z "${ICEMAKE_ALTERNATE_FHS}" ]; then
             icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
