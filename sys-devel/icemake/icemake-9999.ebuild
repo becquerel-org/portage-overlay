@@ -13,17 +13,17 @@ IUSE=""
 S=${WORKDIR}/${PN}
 
 pkg_setup() {
-	ewarn
-	ewarn "WARNING: This is a live GIT build"
-	ewarn
+    ewarn
+    ewarn "WARNING: This is a live GIT build"
+    ewarn
 }
 
 src_compile() {
-	./build-icemake.sh -Ld ${D}/usr||die
+    ./build-icemake.sh -Ld ${D}/usr||die
 }
 
 src_install() {
-	./build/b-icemake -Ldif ${D}/usr icemake||die
+    ./build/b-icemake -Ldif ${D}/usr icemake||die
 
-	dodoc AUTHORS COPYING CREDITS README
+    dodoc AUTHORS COPYING CREDITS README
 }

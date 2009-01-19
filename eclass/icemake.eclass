@@ -65,8 +65,6 @@ icemake_src_install() {
         fi
     fi
 
-    dodoc AUTHORS COPYING CREDITS README
-
     for i in lib lib32 lib64; do
         if [ -d ${D}/${i} ]; then
             mkdir ${D}/usr/${i}
@@ -78,9 +76,15 @@ icemake_src_install() {
         fi
     done
 
+    if [ -d documentation/man ]; then
+        doman documentation/man/*
+    fi
+
     if use doc; then
         for i in documentation/doxygen/man/*/*; do
             doman ${i}
         done
     fi
+
+    dodoc AUTHORS COPYING CREDITS README
 }
