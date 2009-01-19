@@ -9,3 +9,4 @@ DEPEND="${DEPEND}
     >=sys-libs/duat-5"
 
 ICEMAKE_PREFIX="/"
+ICEMAKE_ALTERNATE_FHS="kyu"

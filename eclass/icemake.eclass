@@ -1,11 +1,14 @@
+inherit multilib
+
 IUSE="doc debug combine"
 
 DEPEND="${DEPEND}
-        >=sys-devel/icemake-6
+        >=sys-devel/icemake-7
         doc? ( app-doc/doxygen )"
 
 ICEMAKE_TARGETS=""
 ICEMAKE_PREFIX="/usr"
+ICEMAKE_ALTERNATE_FHS=""
 
 EXPORT_FUNCTIONS src_compile src_test src_install
 
@@ -24,7 +27,8 @@ icemake_flags() {
 }
 
 icemake_src_compile() {
-    icemake ${ICEMAKE_TARGETS} $(icemake_flags) -Ld "${D}${ICEMAKE_PREFIX}"||die
+    icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
+        -Ld "${D}${ICEMAKE_PREFIX}"||die
 
     if use doc; then
         doxygen
@@ -32,11 +36,18 @@ icemake_src_compile() {
 }
 
 icemake_src_test() {
-    icemake ${ICEMAKE_TARGETS} $(icemake_flags) -Ldr "${D}${ICEMAKE_PREFIX}"||die
+    icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
+        -Ldr "${D}${ICEMAKE_PREFIX}"||die
 }
 
 icemake_src_install() {
-    icemake ${ICEMAKE_TARGETS} $(icemake_flags) -Ldif "${D}${ICEMAKE_PREFIX}"||die
+    if [ -z "${ICEMAKE_ALTERNATE_FHS}" ]; then
+        icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
+            -Ldifl "${D}${ICEMAKE_PREFIX}" $(get_libdir)||die
+    else
+        icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
+            -Ldibl "${D}${ICEMAKE_PREFIX}" ${ICEMAKE_ALTERNATE_FHS} $(get_libdir)||die
+    fi
 
     dodoc AUTHORS COPYING CREDITS README
 
