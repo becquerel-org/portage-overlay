@@ -1,7 +1,5 @@
-inherit icemake kyuba-org-git
+inherit curie kyuba-org-git
 
 DESCRIPTION="Communications library (9P2000, etc) based on Curie"
 
 SLOT="0"
-DEPEND="${DEPEND}
-    >=sys-libs/curie-6"
