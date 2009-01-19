@@ -6,3 +6,5 @@ SLOT="0"
 KEYWORDS="~ppc ~x86 ~amd64"
 DEPEND="${DEPEND}
     >=sys-libs/curie-6"
+
+ICEMAKE_PREFIX="/"
