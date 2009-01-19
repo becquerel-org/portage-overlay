@@ -1,6 +1,6 @@
 inherit multilib
 
-IUSE="doc debug combine"
+IUSE="doc debug combine non-fhs"
 
 DEPEND="${DEPEND}
         >=sys-devel/icemake-7
@@ -41,12 +41,19 @@ icemake_src_test() {
 }
 
 icemake_src_install() {
-    if [ -z "${ICEMAKE_ALTERNATE_FHS}" ]; then
-        icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
-            -Ldifl "${D}${ICEMAKE_PREFIX}" $(get_libdir)||die
+    if use non-fhs; then
+        if [ -z "${ICEMAKE_ALTERNATE_FHS}" ]; then
+            icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
+                -Ldis "${D}${ICEMAKE_PREFIX}"||die
     else
-        icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
-            -Ldibl "${D}${ICEMAKE_PREFIX}" ${ICEMAKE_ALTERNATE_FHS} $(get_libdir)||die
+        if [ -z "${ICEMAKE_ALTERNATE_FHS}" ]; then
+            icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
+                -Ldifl "${D}${ICEMAKE_PREFIX}" $(get_libdir)||die
+        else
+            icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
+                -Ldibl "${D}${ICEMAKE_PREFIX}" ${ICEMAKE_ALTERNATE_FHS}\
+                       $(get_libdir)||die
+        fi
     fi
 
     dodoc AUTHORS COPYING CREDITS README
