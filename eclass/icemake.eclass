@@ -27,8 +27,13 @@ icemake_flags() {
 }
 
 icemake_src_compile() {
-    icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
-        -Ld "${D}${ICEMAKE_PREFIX}"||die
+    if use non-fhs; then
+        icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
+            -Ld "${D}/"||die
+    else
+        icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
+            -Ld "${D}${ICEMAKE_PREFIX}"||die
+    fi
 
     if use doc; then
         doxygen
@@ -36,14 +41,19 @@ icemake_src_compile() {
 }
 
 icemake_src_test() {
-    icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
-        -Ldr "${D}${ICEMAKE_PREFIX}"||die
+    if use non-fhs; then
+        icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
+            -Ldr "${D}/"||die
+    else
+        icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
+            -Ldr "${D}${ICEMAKE_PREFIX}"||die
+    fi
 }
 
 icemake_src_install() {
     if use non-fhs; then
         icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
-            -Ldis "${D}${ICEMAKE_PREFIX}"||die
+            -Ldis "${D}/"||die
     else
         if [ -z "${ICEMAKE_ALTERNATE_FHS}" ]; then
             icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
