@@ -67,7 +67,7 @@ icemake_src_install() {
 
     for i in lib lib32 lib64; do
         if [ -d ${D}/${i} ]; then
-            mkdir ${D}/usr/${i}
+            mkdir -p ${D}/usr/${i}
             mv ${D}/${i}/*.a ${D}/usr/${i}
 
             if [ -d ${D}/${i}/pkgconfig ]; then
