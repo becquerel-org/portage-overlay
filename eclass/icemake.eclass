@@ -23,6 +23,10 @@ icemake_flags() {
         icemake_params="${icemake_params} -c"
     fi
 
+    if use doc; then
+        icemake_params="${icemake_params} -x"
+    fi
+
     echo ${icemake_params}
 }
 
