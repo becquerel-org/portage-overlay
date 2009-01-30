@@ -20,6 +20,7 @@ pkg_setup() {
 
 src_compile() {
     ./build-icemake.sh -Lod ${D}/usr||die
+    ./build/b-icemake -Lod ${D}/usr icemake||die
 }
 
 src_install() {
