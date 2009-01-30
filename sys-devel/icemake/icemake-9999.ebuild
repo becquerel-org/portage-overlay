@@ -19,11 +19,11 @@ pkg_setup() {
 }
 
 src_compile() {
-    ./build-icemake.sh -Ld ${D}/usr||die
+    ./build-icemake.sh -Lod ${D}/usr||die
 }
 
 src_install() {
-    ./build/b-icemake -Ldif ${D}/usr icemake||die
+    ./build/b-icemake -Lodif ${D}/usr icemake||die
 
     dodoc AUTHORS COPYING CREDITS README
 }
