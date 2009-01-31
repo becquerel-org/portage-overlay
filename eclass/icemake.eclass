@@ -41,7 +41,6 @@ icemake_dl_path() {
 }
 
 icemake_src_compile() {
-    LD_LIBRARY_PATH="$(icemake_dl_path)"
 
     if use non-fhs; then
         icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
@@ -57,20 +56,18 @@ icemake_src_compile() {
 }
 
 icemake_src_test() {
-    LD_LIBRARY_PATH="$(icemake_dl_path)"
-
     if use non-fhs; then
-        icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
+        LD_LIBRARY_PATH="$(icemake_dl_path)" icemake ${ICEMAKE_TARGETS}\
+            $(icemake_flags)\
             -Ldr "${D}/"||die
     else
-        icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
+        LD_LIBRARY_PATH="$(icemake_dl_path)" icemake ${ICEMAKE_TARGETS}\
+            $(icemake_flags)\
             -Ldr "${D}${ICEMAKE_PREFIX}"||die
     fi
 }
 
 icemake_src_install() {
-    LD_LIBRARY_PATH="$(icemake_dl_path)"
-
     if use non-fhs; then
         icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
             -Ldis "${D}/"||die
