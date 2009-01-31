@@ -92,7 +92,7 @@ icemake_src_install() {
             fi
 
             for j in ${D}/${i}/*.so; do
-                if [ -h ${j} ]; do
+                if [ -h ${j} ]; then
                     gen_usr_ldscript ${j##*/}
                 done
             done
