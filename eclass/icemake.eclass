@@ -93,6 +93,11 @@ icemake_src_install() {
         fi
     done
 
+    if [ -d ${D}/include ]; then
+        mkdir -p ${D}/usr/include
+        mv ${D}/include/* ${D}/usr/include
+    fi
+
     if [ -d documentation/man ]; then
         doman documentation/man/*
     fi
