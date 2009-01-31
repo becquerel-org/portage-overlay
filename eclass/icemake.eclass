@@ -30,7 +30,19 @@ icemake_flags() {
     echo ${icemake_params}
 }
 
+icemake_dl_path() {
+    local flags="."
+
+    for i in build/*/*; do
+        flags="${flags}:${i}"
+    done
+
+    echo ${flags}
+}
+
 icemake_src_compile() {
+    LD_LIBRARY_PATH="$(icemake_dl_path)"
+
     if use non-fhs; then
         icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
             -Ld "${D}/"||die
@@ -45,6 +57,8 @@ icemake_src_compile() {
 }
 
 icemake_src_test() {
+    LD_LIBRARY_PATH="$(icemake_dl_path)"
+
     if use non-fhs; then
         icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
             -Ldr "${D}/"||die
@@ -55,6 +69,8 @@ icemake_src_test() {
 }
 
 icemake_src_install() {
+    LD_LIBRARY_PATH="$(icemake_dl_path)"
+
     if use non-fhs; then
         icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
             -Ldis "${D}/"||die
