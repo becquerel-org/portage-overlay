@@ -1,4 +1,4 @@
-inherit multilib
+inherit multilib toolchain-funcs
 
 IUSE="doc debug combine non-fhs"
 
@@ -90,6 +90,12 @@ icemake_src_install() {
             if [ -d ${D}/${i}/pkgconfig ]; then
                 mv ${D}/${i}/pkgconfig ${D}/usr/${i}
             fi
+
+            for j in ${D}/${i}/*.so; do
+                if [ -h ${j} ]; do
+                    gen_usr_ldscript ${j##*/}
+                done
+            done
         fi
     done
 
