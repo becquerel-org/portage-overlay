@@ -1,6 +1,6 @@
 inherit multilib toolchain-funcs
 
-IUSE="doc debug combine non-fhs dynamic"
+IUSE="doc debug combine non-fhs dynamic static"
 
 DEPEND="${DEPEND}
         >=sys-devel/icemake-7
@@ -29,6 +29,10 @@ icemake_flags() {
 
     if use dynamic; then
         icemake_params="${icemake_params} -R"
+    fi
+
+    if use static; then
+        icemake_params="${icemake_params} -o"
     fi
 
     echo ${icemake_params}
