@@ -3,7 +3,7 @@ inherit git
 EGIT_REPO_URI="git://git.kyuba.org/${PN}.git"
 HOMEPAGE="http://kyuba.org/"
 
-LICENSE="BSD"
+LICENSE="MIT"
 KEYWORDS=""
 S=${WORKDIR}/${PN}
 
