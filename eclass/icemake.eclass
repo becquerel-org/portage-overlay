@@ -107,10 +107,15 @@ icemake_src_install() {
         fi
     done
 
-    if [ -d ${D}/include ]; then
-        mkdir -p ${D}/usr/include
-        mv ${D}/include/* ${D}/usr/include
-    fi
+    for i in include share; do
+        if [ -d ${D}/$i ]; then
+            if [ ! -d "${D}/usr" ]; then
+                mkdir -p ${D}/usr;
+            fi
+
+            mv ${D}/$i ${D}/usr/$i
+        fi
+    done
 
     if [ -d documentation/man ]; then
         doman documentation/man/*
