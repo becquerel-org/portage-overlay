@@ -57,10 +57,6 @@ icemake_src_compile() {
         icemake ${ICEMAKE_TARGETS} $(icemake_flags)\
             -Ld "${D}${ICEMAKE_PREFIX}"||die
     fi
-
-    if use doc; then
-        doxygen
-    fi
 }
 
 icemake_src_test() {
