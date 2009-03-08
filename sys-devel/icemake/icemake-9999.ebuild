@@ -5,7 +5,7 @@ EGIT_REPO_URI="git://git.kyuba.org/curie.git"
 DESCRIPTION="Build tool based on curie and intended for curie programmes"
 HOMEPAGE="http://kyuba.org/"
 
-LICENSE="BSD"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
