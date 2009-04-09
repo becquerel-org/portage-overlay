@@ -1,4 +1,4 @@
 inherit icemake
 
 DEPEND="${DEPEND}
-        >=sys-libs/curie-7"
+        >=sys-libs/curie-8"

@@ -3,7 +3,7 @@ inherit multilib toolchain-funcs
 IUSE="doc debug combine non-fhs dynamic static"
 
 DEPEND="${DEPEND}
-        >=sys-devel/icemake-7
+        >=sys-devel/icemake-8
         doc? ( app-doc/doxygen )"
 
 ICEMAKE_TARGETS=""
