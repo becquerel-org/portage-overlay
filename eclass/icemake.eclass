@@ -60,11 +60,11 @@ icemake_src_compile() {
 
 icemake_src_test() {
 	if use non-fhs; then
-		LD_LIBRARY_PATH="$(icemake_dl_path)" icemake ${ICEMAKE_TARGETS}\
+		LD_LIBRARY_PATH="$(icemake_dl_path)" ice ${ICEMAKE_TARGETS}\
 			$(icemake_flags)\
 			-Ldr "${D}/"||ewarn "WARNING: $? test case(s) failed"
 	else
-		LD_LIBRARY_PATH="$(icemake_dl_path)" icemake ${ICEMAKE_TARGETS}\
+		LD_LIBRARY_PATH="$(icemake_dl_path)" ice ${ICEMAKE_TARGETS}\
 			$(icemake_flags)\
 			-Ldr "${D}${ICEMAKE_PREFIX}"||ewarn "WARNING: $? test case(s) failed."
 	fi
