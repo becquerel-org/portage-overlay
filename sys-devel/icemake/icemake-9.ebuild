@@ -13,11 +13,11 @@ S=${WORKDIR}/curie-${PV}
 
 src_compile() {
 	./build-icemake.sh -Lod ${D}/usr||die
-	./build/b-icemake -Lod ${D}/usr icemake||die
+	./build/b-icemake -Lod ${D}/usr icemake syscall ice||die
 }
 
 src_install() {
-	./build/b-icemake -Lodif ${D}/usr icemake||die
+	./build/b-icemake -Lodif ${D}/usr icemake ice||die
 
         dodoc AUTHORS COPYING CREDITS README
 }
