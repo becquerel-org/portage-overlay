@@ -19,5 +19,5 @@ src_compile() {
 src_install() {
 	./build/b-icemake -Lodif ${D}/usr icemake||die
 
-        dodoc AUTHORS COPYING CREDITS README
+	dodoc AUTHORS COPYING CREDITS README
 }

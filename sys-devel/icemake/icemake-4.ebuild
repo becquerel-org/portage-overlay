@@ -12,16 +12,16 @@ IUSE=""
 S=${WORKDIR}/curie-${PV}
 
 src_compile() {
-        ./build.sh curie icemake -Ld ${D}/usr ||die
+	./build.sh curie icemake -Ld ${D}/usr ||die
 }
 
 src_test() {
-        ./build.sh icemake -Ldr ${D}/usr ||die
+	./build.sh icemake -Ldr ${D}/usr ||die
 }
 
 src_install() {
-        ./build.sh icemake -Ldif ${D}/usr ||die
+	./build.sh icemake -Ldif ${D}/usr ||die
 
-        dodoc AUTHORS COPYING CREDITS README
+	dodoc AUTHORS COPYING CREDITS README
 }
 
