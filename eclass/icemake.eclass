@@ -38,16 +38,6 @@ icemake_flags() {
 	echo ${icemake_params}
 }
 
-icemake_dl_path() {
-	local flags="."
-
-	for i in build/*/*; do
-		flags="${flags}:${i}"
-	done
-
-	echo ${flags}
-}
-
 icemake_src_compile() {
 	if use non-fhs; then
 		ice ${ICEMAKE_TARGETS} $(icemake_flags)\
@@ -60,11 +50,11 @@ icemake_src_compile() {
 
 icemake_src_test() {
 	if use non-fhs; then
-		LD_LIBRARY_PATH="$(icemake_dl_path)" ice ${ICEMAKE_TARGETS}\
+		ice ${ICEMAKE_TARGETS}\
 			$(icemake_flags)\
 			-Ldr "${D}/"||ewarn "WARNING: $? test case(s) failed"
 	else
-		LD_LIBRARY_PATH="$(icemake_dl_path)" ice ${ICEMAKE_TARGETS}\
+		ice ${ICEMAKE_TARGETS}\
 			$(icemake_flags)\
 			-Ldr "${D}${ICEMAKE_PREFIX}"||ewarn "WARNING: $? test case(s) failed."
 	fi
