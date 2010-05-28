@@ -1,8 +1,8 @@
 inherit eutils
 
 DESCRIPTION="Communications library (9P2000, etc) based on Curie"
-HOMEPAGE="http://kyuba.org/"
-SRC_URI="http://kyuba.org/files/${P}.tar.bz2"
+HOMEPAGE="http://becquerel.org/"
+SRC_URI="http://becquerel.org/files/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

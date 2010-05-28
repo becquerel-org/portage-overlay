@@ -1,8 +1,8 @@
 inherit eutils
 
 DESCRIPTION="Build tool based on curie and intended for curie programmes"
-HOMEPAGE="http://kyuba.org/"
-SRC_URI="http://kyuba.org/files/curie-${PV}.tar.bz2"
+HOMEPAGE="http://becquerel.org/"
+SRC_URI="http://becquerel.org/files/curie-${PV}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

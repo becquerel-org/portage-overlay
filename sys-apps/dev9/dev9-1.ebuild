@@ -1,6 +1,6 @@
 DESCRIPTION="udev/devfs workalike, based on Duat"
-HOMEPAGE="http://kyuba.org/"
-SRC_URI="http://kyuba.org/files/${P}.tar.bz2"
+HOMEPAGE="http://becquerel.org/"
+SRC_URI="http://becquerel.org/files/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

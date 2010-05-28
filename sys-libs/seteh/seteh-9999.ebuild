@@ -1,4 +1,4 @@
-inherit curie kyuba-org-git
+inherit curie kyuba-git
 
 DESCRIPTION="Shell Utilities in Library Form"
 

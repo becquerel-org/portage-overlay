@@ -1,4 +1,4 @@
-inherit curie kyuba-org-git
+inherit curie kyuba-git
 
 DEPEND="${DEPEND}
         >=sys-libs/seteh-1"

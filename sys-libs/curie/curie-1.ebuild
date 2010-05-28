@@ -1,8 +1,8 @@
 inherit eutils
 
 DESCRIPTION="A minimalistic, sexpr-based, non-posix(!) libc"
-HOMEPAGE="http://kyuba.org/"
-SRC_URI="http://kyuba.org/files/${P}.tar.bz2"
+HOMEPAGE="http://becquerel.org/"
+SRC_URI="http://becquerel.org/files/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

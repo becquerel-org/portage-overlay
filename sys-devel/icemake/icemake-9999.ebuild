@@ -1,9 +1,9 @@
 inherit git eutils
 
-EGIT_REPO_URI="git://git.kyuba.org/curie.git"
+EGIT_REPO_URI="git://git.becquerel.org/kyuba/curie.git"
 
 DESCRIPTION="Build tool based on curie and intended for curie programmes"
-HOMEPAGE="http://kyuba.org/"
+HOMEPAGE="http://becquerel.org/"
 
 LICENSE="MIT"
 SLOT="0"

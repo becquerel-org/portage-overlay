@@ -1,4 +1,4 @@
-inherit icemake kyuba-org
+inherit icemake becquerel-org
 
 DESCRIPTION="A minimalistic, sexpr-based, non-posix(!), non-ansi(!) libc"
 

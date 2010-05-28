@@ -1,4 +1,4 @@
-inherit icemake kyuba-org-git
+inherit icemake kyuba-git
 
 DESCRIPTION="A minimalistic, sexpr-based, non-posix(!), non-ansi(!) libc"
 

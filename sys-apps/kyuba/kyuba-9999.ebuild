@@ -1,7 +1,7 @@
-inherit curie kyuba-org-git
+inherit curie kyuba-git
 
 DESCRIPTION="The Kyuba Init Daemons"
-EGIT_REPO_URI="git://git.kyuba.org/core.git"
+EGIT_REPO_URI="git://git.becquerel.org/kyuba/core.git"
 
 SLOT="0"
 

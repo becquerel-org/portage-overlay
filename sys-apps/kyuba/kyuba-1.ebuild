@@ -1,4 +1,4 @@
-inherit duat kyuba-org
+inherit duat becquerel-org
 
 DESCRIPTION="The Kyuba Init Daemons"
 

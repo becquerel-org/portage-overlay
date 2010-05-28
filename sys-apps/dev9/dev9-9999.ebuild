@@ -1,4 +1,4 @@
-inherit duat kyuba-org-git
+inherit duat kyuba-git
 
 DESCRIPTION="udev/devfs workalike, based on Duat"
 
